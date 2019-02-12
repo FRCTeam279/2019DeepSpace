@@ -150,26 +150,18 @@ def init():
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
     btnCargoGrabTog.whenPressed(ExtendBack())
     
-    """
-    global btnResetEncoders
-    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    btnResetEncoders.whenPressed(TankDriveResetEncoders())
-    """
-
-    """
-    global axisElevator
-    axisElevator = JoystickAxis(goGamePad, config.axisElevatorIndex)
-    axisElevator.     #??? idk how to configure joystick axis
-    """
-
-    """
-    global btnRampTog
-    btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
-    btnRampTog.whenPressed(ExtendFront())
-    """
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     #btnResetEncoders.whenPressed(TankDriveResetEncoders())
+    
+    #global axisElevator
+    #axisElevator = joystickAxis(goGamePad, config.axisElevatorIndex)    
+
+    #global btnResetEncoders
+    #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+    #btnResetEncoders.whenPressed(TankDriveResetEncoders())
+
+
 
     # These variable names are inconsistent, need to be fixed!!!!
     #global btnRampExtendTog
