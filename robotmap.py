@@ -123,5 +123,5 @@ print("RobotMap module completed load")
 #-----------------------------------------------------------
 # Hatch Grab Config
 #-----------------------------------------------------------
-hatchgrab= configHolder()
+hatchgrab = ConfigHolder()
 hatchgrab.solenoid=3

@@ -6,6 +6,8 @@ from commands.retractall import RetractAll
 from commands.extendfront import ExtendFront
 from commands.extendback import ExtendBack
 from commands.retractfront import RetractFront
+from commands.rampextend import RampExtend
+from commands.rampretract import RampRetract
 import robotmap
 
 
@@ -52,10 +54,11 @@ config.btnRetractFrontIndex = 5
 config.btnRetractBackIndex = 6
 
 # GO Gamepad (Logitech)
-config.btnRampTogIndex = 4         # 4 = Y
 config.btnHatchGrabTogIndex = 1    # 1 = A
 config.btnCargoGrabOpenTogIndex = 3    # 3 = X
 config.btnCargoGrabCloseTogIndex = 5 #????
+config.btnRampExtendTogIndex = 6
+config.btnRampRetractTogIndex = 7
 
 config.axisElevatorIndex = 9 #???
 
@@ -73,7 +76,8 @@ btnLift = None             # added to eject/retract cylinder(s)
 btnRetract = None
 btnEnableLightSensor = None
 
-btnRampTog = None
+btnRampExtendTog = None
+btnRampRetractTog = None 
 btnHatchGrabTog = None
 btnCargoGrabTog = None
 axisElevator = None
@@ -168,12 +172,13 @@ def init():
     #btnResetEncoders.whenPressed(TankDriveResetEncoders())
 
     # These variable names are inconsistent, need to be fixed!!!!
-    #global RampExtend
-    #btnRampExtendTog= JoystickButton(goGamePad, config.btnRampExtendTogIndex)
-    #btn.RampExtend.whenPressed(RampExtend())
+    #global btnRampExtendTog
+    #btnRampExtendTog = JoystickButton(goGamePad, config.btnRampExtendTogIndex)
+    #btnRampExtendTog.whenPressed(RampExtend())
 
-    #global RampRetract
-    #btn.RampRetract.whenPressed(RampRetract())
+    #global btnRampRetractTog
+    #btnRampRetractTog = JoystickButton(goGamePad, config.btnRampRetractTogIndex)
+    #btnRampRetractTog.whenPressed(RampRetract())
 
 # ----------------------------------------------------------
 # Utility Functions
