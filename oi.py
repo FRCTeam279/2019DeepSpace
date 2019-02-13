@@ -33,13 +33,13 @@ class ConfigHolder:
 config = ConfigHolder()
 
 # Driver Sticks
-config.leftDriverStickNullZone = 0.1
-config.rightDriverStickNullZone = 0.08
+config.leftDriverStickNullZone = 0.08
+config.rightDriverStickNullZone = 0.05
 
 config.throttleFilterPower = 0.4
 config.turnFilterPower = 0.4
 
-# Left Joystickc
+# Left Joystick
 config.btnDriveSlow = 1
 config.btnResetEncodersIndex = 2
 config.btnEnableLightSensorIndex = 3
