@@ -22,9 +22,9 @@ driveLine.rightMotorPort = 1
 
 driveLine.frontIRPort = 8          
 driveLine.backIRPort = 9          
-driveLine.spdCompSmall = 1
-driveLine.spdCompMedium = 1
-driveLine.spdCompLarge = 1
+driveLine.spdCompSmall = .8
+driveLine.spdCompMedium = .8
+driveLine.spdCompLarge = .8
 driveLine.RtSensPort = 3      # Line detect analog input right-sensor port 
 driveLine.LftSensPort = 2     # Line detect analog input left-sensor port
 

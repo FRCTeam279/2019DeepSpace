@@ -42,40 +42,36 @@ class TankDrive(Subsystem):
         if oi.btnEnableLightSensor.get():
             r = self.rSensor.getVoltage()
             l = self.lSensor.getVoltage()
-            tilted = "no tilt"
+            spdReduce = 0.5
+            spdCorr1 = 0.75
+            spdCorr2 = .5
+            spdCorr3 = .3
             if forward:
-                spdLeft = .5*spdLeft
-                spdRight = .5*spdRight
+                spdLeft = spdReduce*spdLeft
+                spdRight = spdReduce*spdRight
             
-            if abs(l - r) > 0.1 and abs(l - r) <= 0.88 and forward:
-                tilted = "small"
-            elif abs(l - r) > 0.88 and abs(l - r) <= 1.4 and forward:
-                tilted = "medium"
-            elif abs(l - r) > 1.4 and abs(l - r) <= 2.1 and forward:
-                tilted = "large"
-
-            if tilted == "small":
+            if abs(l - r) > 0.1 and abs(l - r) <= 0.88 and forward:   # small tilt
                 if (r > l):       # small tilt towards right
                     spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompSmall))
-                    spdLeft = spdLeft*.75
+                    spdLeft = spdLeft*spdCorr1
                 else:
-                    spdRight = spdRight*.75
+                    spdRight = spdRight*spdCorr1
                     spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompSmall))
-            if tilted == "medium":   
+            elif abs(l - r) > 0.88 and abs(l - r) <= 1.4 and forward:  # medium tilt
                 if (r > l):       # medium tilt towards right
                     spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompMedium))
-                    spdLeft = spdLeft*.5
+                    spdLeft = spdLeft*spdCorr2
                 else:
-                    spdRight = spdRight*.5
+                    spdRight = spdRight*spdCorr2
                     spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompMedium))
-            if tilted == "large":  
+            elif abs(l - r) > 1.4 and abs(l - r) <= 2.1 and forward:  # large tilt
                 if (r > l):       # large tilt towards right
                     spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompLarge))
-                    spdLeft = spdLeft*.30
+                    spdLeft = spdLeft*spdCorr3
                 else:
-                    spdRight = spdRight*.30
+                    spdRight = spdRight*spdCorr3
                     spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompLarge))
-        
+
         self.leftSpdCtrl.set(spdLeft)
         self.rightSpdCtrl.set(spdRight)
     
