@@ -13,10 +13,10 @@ class HatchGrab(Subsystem):
         super().__init__('HatchGrab')
         self.logPrefix = "HatchGrab: "
         self.hatchGrabSolenoid = wpilib.Solenoid(1,robotmap.hatchgrab.solenoid)
-    
-    self.servo1 = wpilib.PWM(robotmap.cargograb)
+        self.servo1 = wpilib.PWM(robotmap.cargograb)
 
-    self.servo2 = wpilib.PWM(robotmap.cargograb
+        self.servo2 = wpilib.PWM(robotmap.cargograb)
+        
     def HatchOpen(self):
         self.hatchGrabSolenoid.set(1)
 

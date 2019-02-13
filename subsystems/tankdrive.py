@@ -32,7 +32,7 @@ class TankDrive(Subsystem):
     # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
-            self.setDefaultCommand(TankDriveTeleopDefaultNFS()) #skid
+            self.setDefaultCommand(TankDriveTeleopDefaultNFS()) # or skid
             print("{}Default command set to DriveTeleopDefaultNFS".format(self.logPrefix))
 
     def driveRaw(self, left, right):
@@ -43,7 +43,10 @@ class TankDrive(Subsystem):
             r = self.rSensor.getVoltage()
             l = self.lSensor.getVoltage()
             tilted = "no tilt"
-
+            if forward:
+                spdLeft = .5*spdLeft
+                spdRight = .5*spdRight
+            
             if abs(l - r) > 0.1 and abs(l - r) <= 0.88 and forward:
                 tilted = "small"
             elif abs(l - r) > 0.88 and abs(l - r) <= 1.4 and forward:
@@ -53,25 +56,25 @@ class TankDrive(Subsystem):
 
             if tilted == "small":
                 if (r > l):       # small tilt towards right
-                    spdRight = max(1,right*(1+robotmap.driveLine.spdCompSmall))
-                    spdLeft = left
+                    spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompSmall))
+                    spdLeft = spdLeft*.75
                 else:
-                    spdRight = right
-                    spdLeft = max(1,left*(1+robotmap.driveLine.spdCompSmall))
+                    spdRight = spdRight*.75
+                    spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompSmall))
             if tilted == "medium":   
                 if (r > l):       # medium tilt towards right
-                    spdRight = max(1,right*(1+robotmap.driveLine.spdCompMedium))
-                    spdLeft = left
+                    spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompMedium))
+                    spdLeft = spdLeft*.5
                 else:
-                    spdRight = right
-                    spdLeft = max(1,left*(1+robotmap.driveLine.spdCompMedium))
+                    spdRight = spdRight*.5
+                    spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompMedium))
             if tilted == "large":  
                 if (r > l):       # large tilt towards right
-                    spdRight = max(1,right*(1+robotmap.driveLine.spdCompLarge))
-                    spdLeft = left
+                    spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompLarge))
+                    spdLeft = spdLeft*.30
                 else:
-                    spdRight = right
-                    spdLeft = max(1,left*(1+robotmap.driveLine.spdCompLarge))
+                    spdRight = spdRight*.30
+                    spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompLarge))
         
         self.leftSpdCtrl.set(spdLeft)
         self.rightSpdCtrl.set(spdRight)

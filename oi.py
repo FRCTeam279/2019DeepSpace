@@ -260,12 +260,12 @@ def getRawThrottle():
     :return:
     The float value of the throttle between -1.0 and 1.0
     """
-    val = leftDriverStick.getY()
+    val = leftDriverStick.getY()  # was set on the left JS
     if val != 0.0:
         val *= -1.0
     return val
 
 
 def getRawTurn():
-    return rightDriverStick.getX()
+    return rightDriverStick.getX()   # was set on the right JS
 

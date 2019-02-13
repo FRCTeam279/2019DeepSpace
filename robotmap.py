@@ -19,19 +19,20 @@ devMode = False
 driveLine = ConfigHolder()
 driveLine.leftMotorPort = 0
 driveLine.rightMotorPort = 1
+
 driveLine.frontIRPort = 8          
 driveLine.backIRPort = 9          
-driveLine.spdCompSmall = 1.0
-driveLine.spdCompMedium = 1.0
-driveLine.spdCompLarge = 1.0
-driveLine.RtSensPort = 1      # Line detect analog input right-sensor port 
+driveLine.spdCompSmall = 1
+driveLine.spdCompMedium = 1
+driveLine.spdCompLarge = 1
+driveLine.RtSensPort = 3      # Line detect analog input right-sensor port 
 driveLine.LftSensPort = 2     # Line detect analog input left-sensor port
 
 # the new MecanumDrive library from WPILIP inverts the right motors by default, so inversion is often not needed.
 # Be sure to view the wheel direction when moving side to side and forward/backward on mounts before testing on ground to verify
 # and remember that the rollers on the wheels should form an X when looked at from the top/bottom
 #  (ie right rear and left front wheels rolers are aligned in same direction, etc..)
-driveLine.invertLeft = True
+driveLine.invertLeft = False
 driveLine.invertRight = False
 #driveLine.invertRightRear = False
 
