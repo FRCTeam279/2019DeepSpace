@@ -43,9 +43,9 @@ class TankDrive(Subsystem):
             r = self.rSensor.getVoltage()
             l = self.lSensor.getVoltage()
             spdReduce = 0.5
-            spdCorr1 = 0.75
-            spdCorr2 = .5
-            spdCorr3 = .3
+            spdCorr1 = 1  #0.8
+            spdCorr2 = 1  #.7
+            spdCorr3 = 1  #.5
             if forward:
                 spdLeft = spdReduce*spdLeft
                 spdRight = spdReduce*spdRight

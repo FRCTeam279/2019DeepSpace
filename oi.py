@@ -8,6 +8,7 @@ from commands.extendback import ExtendBack
 from commands.retractfront import RetractFront
 from commands.rampextend import RampExtend
 from commands.rampretract import RampRetract
+from commands.testcommandgroup import TestCommandGroup
 import robotmap
 
 
@@ -41,8 +42,9 @@ config.turnFilterPower = 0.4
 
 # Left Joystick
 config.btnDriveSlow = 1
-config.btnResetEncodersIndex = 2
-config.btnEnableLightSensorIndex = 3
+config.btnResetEncodersIndex = 3
+config.btnEnableLightSensorIndex = 2
+config.btnTestCmdGroupIndex = 5
 
 # Right Joystick
 config.btnResetYawAngleIndex = 7 #temporarily changed from 2 to 7
@@ -81,6 +83,8 @@ btnRampRetractTog = None
 btnHatchGrabTog = None
 btnCargoGrabTog = None
 axisElevator = None
+
+btnTestCmdGroup = None
 
 # ----------------------------------------------------------
 # Init
@@ -149,6 +153,10 @@ def init():
     global btnCargoGrabTog
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
     btnCargoGrabTog.whenPressed(ExtendBack())
+
+    global btnTestCmdGroup
+    btnTestCmdGroup = JoystickButton(leftDriverStick, config.btnTestCmdGroupIndex)
+    btnTestCmdGroup.whileHeld(TestCommandGroup())
     
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
