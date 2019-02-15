@@ -1,5 +1,5 @@
 from wpilib.command import CommandGroup, PrintCommand, WaitCommand
-from subsystems
+import subsystems
 
 class AutoClimb(CommandGroup):
 
@@ -10,16 +10,25 @@ class AutoClimb(CommandGroup):
 
             self.addSequential(PrintCommand("Starting Climb"))
 
+            self.addSequential(subsystems.drivelift.extendBack())    
+            self.addSequential(WaitCommand(6))
+
+            self.addSequential(subsystems.driveline.driveRaw(-.1,-.1))    
+            self.addSequential(WaitCommand(2))
+            
             self.addSequential(subsystems.drivelift.extendFront())    
-            self.addSequential(WaitCommand(3))
+            self.addSequential(WaitCommand(6))
+            
+            self.addSequential(subsystems.drivelift.retractBack())    
+            self.addSequential(WaitCommand(2))
 
-            self.addSequential(subsystems.driveline.driveRaw())    
-            self.addSequential(WaitCommand(3))
+            self.addSequential(subsystems.driveline.driveRaw(-.1,-.1))    
+            self.addSequential(WaitCommand(2))
 
-            self.addSequential(PrintCommand("3"))    
-            self.addSequential(WaitCommand(3))
+            self.addSequential(subsystems.drivelift.retractFront())    
+            self.addSequential(WaitCommand(2))
 
-            self.addSequential(PrintCommand("4"))    
-            self.addSequential(WaitCommand(3))
+            self.addSequential(subsystems.driveline.driveRaw(-.1,-.1))    
+            self.addSequential(WaitCommand(2))
 
             self.addSequential(PrintCommand("Finished Test"))
