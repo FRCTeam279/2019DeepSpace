@@ -12,7 +12,7 @@ class CloseCargoHold(Command):
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.cargograb.closeCargoHold(-1)
+        subsystems.cargograb.closeCargoHold(0)
 
     def isFinished(self):
         return True
