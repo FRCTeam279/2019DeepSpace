@@ -88,8 +88,8 @@ elevator.margin = 0.3           # A tolerance when going to the level 1 height
 elevator.elevatorDeadZone = .05
 elevator.inchesPerTick = 0.1    # have to calculate this w/ radius once it is actually built
 
-elevator.encAPort = 1       # RECONFIGURE
-elevator.encBPort = 2       # RECONFIGURE
+elevator.encAPort = 4
+elevator.encBPort = 5
 elevator.encType = wpilib.Encoder.EncodingType.k4X
 elevator.encReverse = False
 

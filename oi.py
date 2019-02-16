@@ -11,6 +11,7 @@ from commands.rampextend import RampExtend
 from commands.rampretract import RampRetract
 from commands.autoclimb import AutoClimb
 from commands.elevatormovelvlone import ElevatorMoveLvlOne
+from commands.elevatorresetencoders import ElevatorResetEncoders
 import robotmap
 
 
@@ -130,6 +131,7 @@ def init():
     # ----------------------------------------------------------
     # Driver Controls
     # ----------------------------------------------------------
+
     #global resetYawBtn
     #resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
     #resetYawBtn.whenPressed(NavxResetYawAngle())
@@ -139,10 +141,6 @@ def init():
     
     global btnEnableLightSensor
     btnEnableLightSensor = JoystickButton(leftDriverStick, config.btnEnableLightSensorIndex)
-
-    global btnRetractFront
-    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
-    btnRetractFront.whenPressed(RetractFront())
 
     global btnCargoGrabTog
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
@@ -156,9 +154,25 @@ def init():
     btnElevatorLvlOne = JoystickButton(goGamePad, config.btnElevatorLvlOneIndex)
     btnElevatorLvlOne.whenPressed(ElevatorMoveLvlOne())
 
-    #global btnResetEncoders
-    #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    #btnResetEncoders.whenPressed(TankDriveResetEncoders())
+    global btnResetEncoders
+    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+    btnResetEncoders.whenPressed(ElevatorResetEncoders())
+
+# ----------------------------------------------------------
+# Ramp system
+# ----------------------------------------------------------
+
+    global btnRampExtendTog
+    btnRampExtendTog = JoystickButton(goGamePad, config.btnRampExtendTogIndex)
+    btnRampExtendTog.whenPressed(RampExtend())
+
+    global btnRampRetractTog
+    btnRampRetractTog = JoystickButton(goGamePad, config.btnRampRetractTogIndex)
+    btnRampRetractTog.whenPressed(RampRetract())
+
+# ----------------------------------------------------------
+# Lift system
+# ----------------------------------------------------------
 
     global btnExtendAll
     btnExtendAll = JoystickButton(rightDriverStick, config.btnExtendAllIndex)
@@ -176,21 +190,13 @@ def init():
     btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
     btnExtendBack.whenPressed(ExtendBack())
 
-    global btnRetractFront
-    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
-    btnRetractFront.whenPressed(RetractFront())
-
     global btnRetractBack
     btnRetractBack = JoystickButton(rightDriverStick, config.btnRetractBackIndex)
     btnRetractBack.whenPressed(RetractBack())
 
-    global btnRampExtendTog
-    btnRampExtendTog = JoystickButton(goGamePad, config.btnRampExtendTogIndex)
-    btnRampExtendTog.whenPressed(RampExtend())
-
-    global btnRampRetractTog
-    btnRampRetractTog = JoystickButton(goGamePad, config.btnRampRetractTogIndex)
-    btnRampRetractTog.whenPressed(RampRetract())
+    global btnRetractFront
+    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
+    btnRetractFront.whenPressed(RetractFront())
 
 # ----------------------------------------------------------
 # Utility Functions
