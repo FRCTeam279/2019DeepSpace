@@ -69,7 +69,7 @@ config.btnCargoGrabCloseTogIndex = 2    # 2 = B
 #config.btnRampRetractTogIndex = 6       # 6 = RB
 config.btnRampTogIndex = 5              # 5 = LB
 
-config.axisCargoGrabIndex = 2           # CONFIGURE 2 = RY axis
+config.axisCargoGrabIndex = 5           # 5 = RY axis
 config.axisElevatorIndex = 1            # 1 = LY axis
 config.btnElevatorLvlOneIndex = 4       # 4 = Y
 
@@ -190,9 +190,15 @@ def init():
     btnRetractAll = JoystickButton(rightDriverStick, config.btnRetractAllIndex)
     btnRetractAll.whenPressed(RetractAll())
 
+
     global btnExtendFront
     btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
     btnExtendFront.whenPressed(ExtendFront())
+
+    global btnRetractFront
+    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
+    btnRetractFront.whenPressed(RetractFront())
+
 
     global btnExtendBack
     btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
@@ -201,10 +207,6 @@ def init():
     global btnRetractBack
     btnRetractBack = JoystickButton(rightDriverStick, config.btnRetractBackIndex)
     btnRetractBack.whenPressed(RetractBack())
-
-    global btnRetractFront
-    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
-    btnRetractFront.whenPressed(RetractFront())
 
 # ----------------------------------------------------------
 # Utility Functions

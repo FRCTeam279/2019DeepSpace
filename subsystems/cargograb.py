@@ -37,12 +37,11 @@ def initDefaultCommand(self):
     self.setDefaultCommand(CargoTeleopDefault)
     print("{}Default command set to CargoGrab".format(self.logPrefix)) 
 
-
-def openCargoHold(self,openbit):
+def openCargoHold(self, openbit):
     self.leftservo.setAngle(openbit)
     self.rightservo.setAngle(openbit)
 
-def closeCargoHold(self,closebit):
+def closeCargoHold(self, closebit):
     self.leftservo.setAngle(closebit)
     self.rightservo.setAngle(closebit)
 

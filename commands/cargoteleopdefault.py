@@ -15,7 +15,7 @@ class CargoTeleopDefault(Command):
 
     def execute(self):
         speed = -(oi.goGamePad.getRawAxis(oi.config.axisCargoGrabIndex))
-        subsystems.cargograb.move(speed)
+        #subsystems.cargograb.move(speed) we dont need this, it should be TOGGLED with a button
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands

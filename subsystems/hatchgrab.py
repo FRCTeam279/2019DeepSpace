@@ -21,12 +21,7 @@ class HatchGrab(Subsystem):
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise       
 
-        #self.hatchBtnState = oi.goGamePad.getRawButton(oi.config.btnHatchGrabTogIndex)
         self.hatchToggle = False
-        #if (self.hatchBtnState == True) and (hatchToggle == False):
-        #    hatchToggle = True
-        #elif (self.hatchBtnState == True) and (hatchToggle == True):
-        #    hatchToggle = False
 
     def HatchOpen(self):
         self.hatchGrabSolenoid.set(1)   # 1: extend, 2: retract, 0: off
