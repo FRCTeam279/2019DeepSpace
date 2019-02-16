@@ -46,6 +46,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+        SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         # optionally do stuff like display data to smart dashboard here while in autonomous
 
@@ -54,6 +55,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+        SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         #optionally do stuff like display data to smart dashboard here while in teleop
 
@@ -62,6 +64,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+        SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         # optionally do stuff like display data to smart dashboard here while in disabled
 
