@@ -7,22 +7,25 @@ import oi
 
 class HatchGrabTeleopDefault(Command):
     def __init__(self):
-            super().__init__('HatchGrabTeleopDefault')
-            self.requires(subsystems.hatchgrab)
-            self.setInterruptible(True)
-            self.setRunWhenDisabled(False)
+        super().__init__('HatchGrabTeleopDefault')
+        self.requires(subsystems.hatchgrab)
+        self.setInterruptible(True)
+        self.setRunWhenDisabled(False)
 
-    def execute(self):
-        hatchToggle = False
-        if (oi.btnHatchGrabTog == True) and (hatchToggle == False):
-            hatchToggle = True
-        elif (oi.btnHatchGrabTog == True) and (hatchToggle == True):
-            hatchToggle = False
-        
-        if hatchToggle == True:
-            subsystems.hatchgrab.HatchOpen()
-        else:
-            subsystems.hatchgrab.HatchClose()
+        #self.hatchBtnState = oi.goGamePad.getRawButton(oi.config.btnHatchGrabTogIndex)
+
+
+        def execute(self):
+        #    hatchToggle = False
+        #    if (self.hatchBtnState == True) and (hatchToggle == False):
+        #        hatchToggle = True
+        #    elif (self.hatchBtnState == True) and (hatchToggle == True):
+        #        hatchToggle = False
+
+            if subsystems.hatchgrab.hatchToggle == True:
+                subsystems.hatchgrab.HatchClose()
+            else:
+                subsystems.hatchgrab.HatchOpen()
 
     def isFinished(self):
         return True

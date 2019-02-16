@@ -46,6 +46,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+        SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         # optionally do stuff like display data to smart dashboard here while in autonomous
 
     def teleopPeriodic(self):
@@ -53,6 +54,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+        SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         #optionally do stuff like display data to smart dashboard here while in teleop
 
     def disabledPeriodic(self):
@@ -60,6 +62,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+        SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         # optionally do stuff like display data to smart dashboard here while in disabled
 
     def testPeriodic(self):

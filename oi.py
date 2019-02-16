@@ -12,6 +12,7 @@ from commands.rampretract import RampRetract
 from commands.autoclimb import AutoClimb
 from commands.elevatormovelvlone import ElevatorMoveLvlOne
 from commands.elevatorresetencoders import ElevatorResetEncoders
+from commands.ramptoggletrigger import RampToggleTrigger
 import robotmap
 
 
@@ -66,6 +67,7 @@ config.btnCargoGrabCloseTogIndex = 2    # 2 = B
 
 config.btnRampExtendTogIndex = 5        # 5 = LB
 config.btnRampRetractTogIndex = 6       # 6 = RB
+config.btnRampTogIndex = 5              # 5 = LB
 
 config.axisCargoGrabIndex = 2           # CONFIGURE 2 = RY axis
 config.axisElevatorIndex = 1            # 1 = LY axis
@@ -97,6 +99,7 @@ btnExtendBack = None
 #Ramp System
 btnRampExtendTog = None
 btnRampRetractTog = None
+btnRampTog = None
 
 #Manipulators
 btnHatchGrabTog = None
@@ -146,6 +149,10 @@ def init():
     
     global btnEnableLightSensor
     btnEnableLightSensor = JoystickButton(leftDriverStick, config.btnEnableLightSensorIndex)
+
+    global btnRampTog
+    btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
+    btnRampTog.whenPressed(RampToggleTrigger())
 
     global btnAutoClimb
     btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)
