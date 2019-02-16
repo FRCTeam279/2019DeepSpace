@@ -89,6 +89,9 @@ elevator.elevatorDeadZone = .05
 elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
 
+elevator.lvlOneHeight = 24
+elevator.margin = 0.3
+
 #reconfigure these ports
 elevator.encAPort = 1
 elevator.encBPort = 2

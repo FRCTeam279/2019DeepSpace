@@ -63,6 +63,7 @@ config.btnRampExtendTogIndex = 6
 config.btnRampRetractTogIndex = 7
 
 config.axisElevatorIndex = 9 #???
+config.btnElevatorLvlOneIndex = 8 #configure
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -82,6 +83,7 @@ btnRampExtendTog = None
 btnRampRetractTog = None 
 btnHatchGrabTog = None
 btnCargoGrabTog = None
+btnElevatorLvlOne = None
 axisElevator = None
 
 btnAutoClimb = None
@@ -157,19 +159,15 @@ def init():
     global btnAutoClimb
     btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)
     btnAutoClimb.whileHeld(AutoClimb())
+
+    global btnElevatorLvlOne
+    btnElevatorLvlOne = JoystickButton(goGamePad, config.btnElevatorLvlOneIndex)
+    btnElevatorLvlOne.whenPressed(ElevatorMoveLvlOne())
     
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     #btnResetEncoders.whenPressed(TankDriveResetEncoders())
     
-    #global axisElevator
-    #axisElevator = joystickAxis(goGamePad, config.axisElevatorIndex)    
-
-    #global btnResetEncoders
-    #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    #btnResetEncoders.whenPressed(TankDriveResetEncoders())
-
-
 
     # These variable names are inconsistent, need to be fixed!!!!
     #global btnRampExtendTog

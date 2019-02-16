@@ -45,18 +45,21 @@ class MyRobot(CommandBasedRobot):
         super().autonomousPeriodic()
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         # optionally do stuff like display data to smart dashboard here while in autonomous
 
     def teleopPeriodic(self):
         Scheduler.getInstance().run()
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         #optionally do stuff like display data to smart dashboard here while in teleop
 
     def disabledPeriodic(self):
         Scheduler.getInstance().run()
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         # optionally do stuff like display data to smart dashboard here while in disabled
 
     def testPeriodic(self):
