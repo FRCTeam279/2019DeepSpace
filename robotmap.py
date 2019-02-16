@@ -70,37 +70,28 @@ nfs.minTimeFullThrottleChange = 1.5
 nfs.maxSpeedChange = (2 * 0.02) / nfs.minTimeFullThrottleChange
 
 # ----------------------------------------------------------
-# Lift Subsystem Config
-# ----------------------------------------------------------
-lift = ConfigHolder()
-lift.raiseBtnAll = 1
-
-# ----------------------------------------------------------
 # elevator Subsystem Config
 # ----------------------------------------------------------
 
 #reconfigure these ports
 elevator = ConfigHolder()
 elevator.btmLimitSwitchPort = 6     # DIO port
-elevator.motorPort = 5      #???
-elevator.btmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
-elevator.holdSpeed = 0.2
-elevator.elevatorDeadZone = .05
+elevator.motorPort = 5              # RECONFIGURE
+elevator.btmLimitNormalClosed = False   # switch is normally cosed
 elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
+elevator.holdSpeed = 0.2
 
-elevator.lvlOneHeight = 24
-elevator.margin = 0.3
+elevator.maxHeight = 48         # inches, calculate this
+elevator.lvlOneHeight = 24      # inches, calculate this
+elevator.margin = 0.3           # A tolerance when going to the level 1 height
+elevator.elevatorDeadZone = .05
+elevator.inchesPerTick = 0.1    # have to calculate this w/ radius once it is actually built
 
-#reconfigure these ports
-elevator.encAPort = 1
-elevator.encBPort = 2
+elevator.encAPort = 1       # RECONFIGURE
+elevator.encBPort = 2       # RECONFIGURE
 elevator.encType = wpilib.Encoder.EncodingType.k4X
 elevator.encReverse = False
-elevator.maxHeight = 48 #change once built, should be in inches since encoder measures ticks per inch
-
-elevator.inchesPerTick = 0.1        #have to calculate this w/ radius once it is actually built
-#drive wheel radius?
 
 #---------------------------------------------------------------------------------------------
 # ramp Subsystem Config
@@ -119,8 +110,8 @@ sensors.hasAHRS = True
 # Cargo Grab Config
 #------------------------------------------------------------
 cargograb = ConfigHolder()
-cargograb.rightServoPort = 5 #Can be changed
-cargograb.leftServoPort = 6 #Can be changed
+cargograb.rightServoPort = 5    # RECONFIGURE
+cargograb.leftServoPort = 6     # RECONFIGURE
 
 print("RobotMap module completed load")
 
@@ -128,4 +119,4 @@ print("RobotMap module completed load")
 # Hatch Grab Config
 #-----------------------------------------------------------
 hatchgrab = ConfigHolder()
-hatchgrab.solenoid=3
+hatchgrab.solenoid = 3      # RECONFIGURE

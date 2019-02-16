@@ -59,7 +59,7 @@ class Elevator(Subsystem):
 
     def move(self, speed):
         btmLimit = self.btmLimitSwitch.get()
-        dist = self.elevatorEncoder.get()*robotmap.elevator.inchesPerTick
+        dist = self.elevatorHeight
         topLimit = dist >= robotmap.elevator.maxHeight
 
         if (btmLimit and speed <= 0.0):
@@ -74,7 +74,7 @@ class Elevator(Subsystem):
 
 
     def elevatorMoveLvlOne(self):
-        if self.elevatorHeight > robotmap.elevator.lvlOneHeight + robotmap.elevator.margin: #make this variable
+        if self.elevatorHeight > robotmap.elevator.lvlOneHeight + robotmap.elevator.margin:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*-0.75))
         elif self.elevatorHeight < robotmap.elevator.lvlOneHeight - robotmap.elevator.margin:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdDown*0.75))
