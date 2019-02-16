@@ -12,11 +12,16 @@ class Ramp(Subsystem):
         print("Ramp: init called")
         super().__init__('Ramp')
         self.logPrefix= 'Ramp: '
-        self.rampSolenoid = wpilib.DoubleSolenoid(1, robotmap.ramp.solenoidExtendPort, robotmap.ramp.solenoidRetractPort)
- 
+
+        try:
+            self.rampSolenoid = wpilib.DoubleSolenoid(1, robotmap.ramp.solenoidExtendPort, robotmap.ramp.solenoidRetractPort)
+        except Exception as e:
+            print("{}Exception caught instantiating ramp solenoid. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
 
     def extendRamp(self):
-        self.rampSolenoid.set(1)
+        self.rampSolenoid.set(1)   # 1: extend, 2: retract, 0: off
 
     def retractRamp(self): 
-        self.rampSolenoid.set(2)
+        self.rampSolenoid.set(2)   # 1: extend, 2: retract, 0: off

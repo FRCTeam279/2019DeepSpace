@@ -16,8 +16,20 @@ class CargoGrab(Subsystem):
         super().__init__('CargoGrab')
         self.logPrefix = "CargoGrab: "
     
-        self.leftservo = wpilib.Servo(robotmap.cargograb.leftServoPort)
-        self.rightservo = wpilib.Servo(robotmap.cargograb.rightServoPort)
+        try:
+            self.leftservo = wpilib.Servo(robotmap.cargograb.leftServoPort)
+        except Exception as e:
+            print("{}Exception caught instantiating left servo. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
+        try:
+            self.rightservo = wpilib.Servo(robotmap.cargograb.rightServoPort)
+        except Exception as e:
+            print("{}Exception caught instantiating right servo. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
 #-----------------------------------------------------------------------------------------
 
 

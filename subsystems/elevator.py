@@ -16,13 +16,23 @@ class Elevator(Subsystem):
         super().__init__('Elevator')
         self.logPrefix = "Elevator: "
 
-        self.btmLimitSwitch = wpilib.DigitalInput(robotmap.elevator.btmLimitSwitchPort)
-        self.elevatorSpdCtrl = wpilib.VictorSP(robotmap.elevator.motorPort)
-        
-        self.elevatorEncoder = wpilib.Encoder(robotmap.elevator.encAPort, robotmap.elevator.encBPort, robotmap.elevator.encReverse, robotmap.elevator.encType)
-        self.elevatorEncoder.setDistancePerPulse(robotmap.elevator.inchesPerTick)
-        self.elevatorHeight = self.elevatorEncoder.get()*robotmap.elevator.inchesPerTick
+        try:
+            self.elevatorSpdCtrl = wpilib.VictorSP(robotmap.elevator.motorPort)
+        except Exception as e:
+            print("{}Exception caught instantiating elevator speed controller. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
 
+        try:
+            self.elevatorEncoder = wpilib.Encoder(robotmap.elevator.encAPort, robotmap.elevator.encBPort, robotmap.elevator.encReverse, robotmap.elevator.encType)
+            self.elevatorEncoder.setDistancePerPulse(robotmap.elevator.inchesPerTick)
+        except Exception as e:
+            print("{}Exception caught instantiating elevator encoder. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
+        self.elevatorHeight = self.elevatorEncoder.get()*robotmap.elevator.inchesPerTick
+        self.btmLimitSwitch = wpilib.DigitalInput(robotmap.elevator.btmLimitSwitchPort)
 
 # ------------------------------------------------------------------------------------------------------------------
     

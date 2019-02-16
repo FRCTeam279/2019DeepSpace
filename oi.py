@@ -67,6 +67,7 @@ config.btnCargoGrabCloseTogIndex = 2    # 2 = B
 config.btnRampExtendTogIndex = 5        # 5 = LB
 config.btnRampRetractTogIndex = 6       # 6 = RB
 
+config.axisCargoGrabIndex = 2           # CONFIGURE 2 = RY axis
 config.axisElevatorIndex = 1            # 1 = LY axis
 config.btnElevatorLvlOneIndex = 4       # 4 = Y
 
@@ -99,7 +100,7 @@ btnRampRetractTog = None
 
 #Manipulators
 btnHatchGrabTog = None
-btnCargoGrabTog = None
+axisCargoGrab = None
 
 # ----------------------------------------------------------
 # Init
@@ -145,10 +146,6 @@ def init():
     
     global btnEnableLightSensor
     btnEnableLightSensor = JoystickButton(leftDriverStick, config.btnEnableLightSensorIndex)
-
-    global btnCargoGrabTog
-    btnCargoGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
-    btnCargoGrabTog.whenPressed(ExtendBack())
 
     global btnAutoClimb
     btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)

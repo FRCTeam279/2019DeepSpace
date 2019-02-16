@@ -17,10 +17,33 @@ class TankLift(Subsystem):
         super().__init__('TankLift')
         self.logPrefix = "TankLift: "
 
-        self.frontCylinder = wpilib.DoubleSolenoid(1, robotmap.driveLine.solenoidRetractFrontPort, robotmap.driveLine.solenoidExtendFrontPort) # 1st arg= CAN ID=1, then takes ports on pcm to energize solenoid
-        self.backCylinder =  wpilib.DoubleSolenoid(1, robotmap.driveLine.solenoidRetractBackPort, robotmap.driveLine.solenoidExtendBackPort)
-        self.frontIR = wpilib.AnalogInput(robotmap.driveLine.frontIRPort)
-        self.backIR = wpilib.AnalogInput(robotmap.driveLine.backIRPort)
+        try:
+            self.frontCylinder = wpilib.DoubleSolenoid(1, robotmap.driveLine.solenoidRetractFrontPort, robotmap.driveLine.solenoidExtendFrontPort) # 1st arg= CAN ID=1, then takes ports on pcm to energize solenoid
+        except Exception as e:
+            print("{}Exception caught instantiating front lift cylinder. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
+        try:
+            self.backCylinder =  wpilib.DoubleSolenoid(1, robotmap.driveLine.solenoidRetractBackPort, robotmap.driveLine.solenoidExtendBackPort)
+        except Exception as e:
+            print("{}Exception caught instantiating back lift cylinder. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
+        try:
+            self.frontIR = wpilib.AnalogInput(robotmap.driveLine.frontIRPort)
+        except Exception as e:
+            print("{}Exception caught instantiating front IR sensor. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
+        try:
+            self.backIR = wpilib.AnalogInput(robotmap.driveLine.backIRPort)
+        except Exception as e:
+            print("{}Exception caught instantiating back IR sensor. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
 
     # ------------------------------------------------------------------------------------------------------------------
     
@@ -28,22 +51,22 @@ class TankLift(Subsystem):
         self.setDefaultCommand(TankLiftTeleopDefault())
         print("{}Default command set to TankLiftTeleopDefault".format(self.logPrefix))
  
-    def extendAll(self):       # reads the lift trigger from the right joystick
+    def extendAll(self):
         self.frontCylinder.set(1)   # 1: extend, 2: retract, 0: off
         self.backCylinder.set(1)
    
-    def retractAll(self):       # reads the lift trigger from the right joystick
+    def retractAll(self):
         self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
         self.backCylinder.set(2)
 
-    def extendFront(self):       # reads the lift trigger from the right joystick
+    def extendFront(self):
         self.frontCylinder.set(1)   # 1: extend, 2: retract, 0: off
         self.backCylinder.set(2)
 
-    def extendBack(self):       # reads the lift trigger from the right joystick
+    def extendBack(self):
         self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
         self.backCylinder.set(1)
-        #this may not be needed in the actual sequence of final robot since the front will always be extended when the back extends
+
  
     def retractFront(self):      
         if self.frontIR.getVoltage() == 1:
@@ -52,6 +75,3 @@ class TankLift(Subsystem):
     def retractBack(self):
         if self.backIR.getVoltage() == 1:
             self.backCylinder.set(2)    # 1: extend, 2: retract, 0: off
-    
-    # more functions for sophisticated functionality
-

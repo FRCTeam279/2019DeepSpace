@@ -13,13 +13,19 @@ class HatchGrab(Subsystem):
         print('HatchGrab: init called')
         super().__init__('HatchGrab')
         self.logPrefix = "HatchGrab: "
-        self.hatchGrabSolenoid = wpilib.DoubleSolenoid(1, robotmap.hatchgrab.solenoidExtendPort, robotmap.hatchgrab.solenoidRetractPort)
-        
+
+        try:
+            self.hatchGrabSolenoid = wpilib.DoubleSolenoid(1, robotmap.hatchgrab.solenoidExtendPort, robotmap.hatchgrab.solenoidRetractPort)
+        except Exception as e:
+            print("{}Exception caught instantiating hatch grabber solenoid. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise       
+
     def HatchOpen(self):
-        self.hatchGrabSolenoid.set(1)
+        self.hatchGrabSolenoid.set(1)   # 1: extend, 2: retract, 0: off
 
     def retractRamp(self): 
-        self.hatchGrabSolenoid.set(2)
+        self.hatchGrabSolenoid.set(2)   # 1: extend, 2: retract, 0: off
 
     #def initDefaultCommand(self):
     #    self.setDefaultCommand(HatchGrabTeleopDefault())

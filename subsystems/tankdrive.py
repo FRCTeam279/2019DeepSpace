@@ -18,7 +18,6 @@ class TankDrive(Subsystem):
         super().__init__('TankDrive')
         self.logPrefix = "TankDrive: "
 
-
     # Speed Controllers
         if robotmap.driveLine.speedControllerType == "TALON":
             try:
@@ -109,7 +108,7 @@ class TankDrive(Subsystem):
                 else:
                     spdRight = spdRight*spdCorr1
                     spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompSmall))
-                    
+
             elif abs(l - r) > 0.88 and abs(l - r) <= 1.4 and forward:  # medium tilt
                 if (r > l):       # medium tilt towards right
                     spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompMedium))
