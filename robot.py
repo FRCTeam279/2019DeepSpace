@@ -45,6 +45,7 @@ class MyRobot(CommandBasedRobot):
         super().autonomousPeriodic()
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
+        SmartDashboard.putNumber("Btm Limit", subsystems.drivelift.backIR.get())
         # optionally do stuff like display data to smart dashboard here while in autonomous
 
     def teleopPeriodic(self):
