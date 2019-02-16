@@ -9,6 +9,7 @@ from commands.retractfront import RetractFront
 from commands.rampextend import RampExtend
 from commands.rampretract import RampRetract
 from commands.autoclimb import AutoClimb
+from commands.elevatormovelvlone import ElevatorMoveLvlOne
 import robotmap
 
 
@@ -167,7 +168,6 @@ def init():
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     #btnResetEncoders.whenPressed(TankDriveResetEncoders())
-    
 
     # These variable names are inconsistent, need to be fixed!!!!
     #global btnRampExtendTog
