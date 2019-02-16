@@ -22,7 +22,7 @@ class HatchGrab(Subsystem):
                 raise       
 
         #self.hatchBtnState = oi.goGamePad.getRawButton(oi.config.btnHatchGrabTogIndex)
-        #self.hatchToggle = False
+        self.hatchToggle = False
         #if (self.hatchBtnState == True) and (hatchToggle == False):
         #    hatchToggle = True
         #elif (self.hatchBtnState == True) and (hatchToggle == True):
