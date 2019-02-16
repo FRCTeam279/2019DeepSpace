@@ -1,5 +1,4 @@
 import time
-import math
 
 from wpilib import SmartDashboard
 from wpilib.command import Command

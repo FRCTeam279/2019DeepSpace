@@ -65,8 +65,8 @@ config.btnHatchGrabTogIndex = 1         # 1 = A
 config.btnCargoGrabOpenTogIndex = 3     # 3 = X
 config.btnCargoGrabCloseTogIndex = 2    # 2 = B
 
-config.btnRampExtendTogIndex = 5        # 5 = LB
-config.btnRampRetractTogIndex = 6       # 6 = RB
+#config.btnRampExtendTogIndex = 5        # 5 = LB
+#config.btnRampRetractTogIndex = 6       # 6 = RB
 config.btnRampTogIndex = 5              # 5 = LB
 
 config.axisCargoGrabIndex = 2           # CONFIGURE 2 = RY axis
@@ -97,8 +97,8 @@ btnRetractBack = None
 btnExtendBack = None
 
 #Ramp System
-btnRampExtendTog = None
-btnRampRetractTog = None
+#btnRampExtendTog = None
+#btnRampRetractTog = None
 btnRampTog = None
 
 #Manipulators
@@ -150,10 +150,6 @@ def init():
     global btnEnableLightSensor
     btnEnableLightSensor = JoystickButton(leftDriverStick, config.btnEnableLightSensorIndex)
 
-    global btnRampTog
-    btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
-    btnRampTog.whenPressed(RampToggleTrigger())
-
     global btnAutoClimb
     btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)
     btnAutoClimb.whileHeld(AutoClimb())
@@ -170,14 +166,18 @@ def init():
 # Ramp system
 # ----------------------------------------------------------
 
-    global btnRampExtendTog
-    btnRampExtendTog = JoystickButton(goGamePad, config.btnRampExtendTogIndex)
-    btnRampExtendTog.whenPressed(RampExtend())
+    #global btnRampExtendTog
+    #btnRampExtendTog = JoystickButton(goGamePad, config.btnRampExtendTogIndex)
+    #btnRampExtendTog.whenPressed(RampExtend())
 
-    global btnRampRetractTog
-    btnRampRetractTog = JoystickButton(goGamePad, config.btnRampRetractTogIndex)
-    btnRampRetractTog.whenPressed(RampRetract())
+    #global btnRampRetractTog
+    #btnRampRetractTog = JoystickButton(goGamePad, config.btnRampRetractTogIndex)
+    #btnRampRetractTog.whenPressed(RampRetract())
 
+    global btnRampTog
+    btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
+    btnRampTog.whenPressed(RampToggleTrigger())
+    
 # ----------------------------------------------------------
 # Lift system
 # ----------------------------------------------------------

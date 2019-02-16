@@ -28,12 +28,12 @@ class HatchGrab(Subsystem):
         #elif (self.hatchBtnState == True) and (hatchToggle == True):
         #    hatchToggle = False
 
-        def HatchOpen(self):
-            self.hatchGrabSolenoid.set(1)   # 1: extend, 2: retract, 0: off
+    def HatchOpen(self):
+        self.hatchGrabSolenoid.set(1)   # 1: extend, 2: retract, 0: off
 
-        def HatchClose(self): 
-            self.hatchGrabSolenoid.set(2)   # 1: extend, 2: retract, 0: off
+    def HatchClose(self): 
+        self.hatchGrabSolenoid.set(2)   # 1: extend, 2: retract, 0: off
 
-        def initDefaultCommand(self):
-            self.setDefaultCommand(HatchGrabTeleopDefault())
-            print("{}Default command set to HatchGrabTeleopDefault".format(self.logPrefix)) 
+    def initDefaultCommand(self):
+        self.setDefaultCommand(HatchGrabTeleopDefault())
+        print("{}Default command set to HatchGrabTeleopDefault".format(self.logPrefix)) 
