@@ -129,7 +129,7 @@ def init():
     try:
         goGamePad = Joystick(2)
     except:
-        print('OI: Error - Could not instantiate Right Driver Stick on USB port 2!!!')
+        print('OI: Error - Could not instantiate GO GamePad on USB port 2!!!')
 
 
     # ----------------------------------------------------------

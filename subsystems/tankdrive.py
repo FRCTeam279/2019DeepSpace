@@ -8,7 +8,7 @@ import oi
 
 import subsystems
 import robotmap
-#from commands.tankdriveteleopdefaultskid import TankDriveTeleopDefaultSkid as TankDriveTeleopDefaultSkid
+from commands.tankdriveteleopdefaultskid import TankDriveTeleopDefaultSkid as TankDriveTeleopDefaultSkid
 from commands.tankdriveteleopdefaultnfs import TankDriveTeleopDefaultNFS as TankDriveTeleopDefaultNFS
 
 class TankDrive(Subsystem):
@@ -19,26 +19,78 @@ class TankDrive(Subsystem):
         self.logPrefix = "TankDrive: "
 
 
-        self.leftSpdCtrl = wpilib.Talon(robotmap.driveLine.leftMotorPort)
-        if robotmap.driveLine.invertLeft:
-            self.leftSpdCtrl.setInverted(True)
-
-        self.rightSpdCtrl = wpilib.Talon(robotmap.driveLine.rightMotorPort)
-        if robotmap.driveLine.invertRight:
-            self.rightSpdCtrl.setInverted(True)
+    # Speed Controllers
+        if robotmap.driveLine.speedControllerType == "TALON":
+            try:
+                self.leftSpdCtrl = wpilib.Talon(robotmap.driveLine.leftMotorPort)
+                if robotmap.driveLine.invertLeft:
+                    self.leftSpdCtrl.setInverted(True)
+            except Exception as e:
+                print("{}Exception caught instantiating left speed controller. {}".format(self.logPrefix, e))
+                if not wpilib.DriverStation.getInstance().isFmsAttached():
+                    raise
         
-        self.rSensor = wpilib.AnalogInput(robotmap.driveLine.RtSensPort)
-        self.lSensor = wpilib.AnalogInput(robotmap.driveLine.LftSensPort)
+        else:
+            try:
+                self.leftSpdCtrl = wpilib.VictorSP(robotmap.driveLine.leftMotorPort)
+                if robotmap.driveLine.invertLeft:
+                    self.leftSpdCtrl.setInverted(True)
+            except Exception as e:
+                print("{}Exception caught instantiating left speed controller. {}".format(self.logPrefix, e))
+                if not wpilib.DriverStation.getInstance().isFmsAttached():
+                    raise
+
+        if robotmap.driveLine.speedControllerType == "TALON":
+            try:
+                self.rightSpdCtrl = wpilib.Talon(robotmap.driveLine.rightMotorPort)
+                if robotmap.driveLine.invertRight:
+                    self.rightSpdCtrl.setInverted(True)
+            except Exception as e:
+                print("{}Exception caught instantiating right speed controller. {}".format(self.logPrefix, e))
+                if not wpilib.DriverStation.getInstance().isFmsAttached():
+                    raise
+        
+        else:
+            try:
+                self.rightSpdCtrl = wpilib.VictorSP(robotmap.driveLine.rightMotorPort)
+                if robotmap.driveLine.invertRight:
+                    self.rightSpdCtrl.setInverted(True)
+            except Exception as e:
+                print("{}Exception caught instantiating right speed controller. {}".format(self.logPrefix, e))
+                if not wpilib.DriverStation.getInstance().isFmsAttached():
+                    raise
+        
+    # IR Sensors
+        try:
+            self.rSensor = wpilib.AnalogInput(robotmap.driveLine.RtSensPort)
+        except Exception as e:
+            print("{}Exception caught instantiating right line sensor. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+        
+        try:
+            self.lSensor = wpilib.AnalogInput(robotmap.driveLine.LftSensPort)
+        except Exception as e:
+            print("{}Exception caught instantiating left line sensor. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
     # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
-            self.setDefaultCommand(TankDriveTeleopDefaultNFS()) # or skid
+        if robotmap.driveLine.controlStyle == "nfs":
+            self.setDefaultCommand(TankDriveTeleopDefaultNFS())
             print("{}Default command set to DriveTeleopDefaultNFS".format(self.logPrefix))
+
+        else:
+            self.setDefaultCommand(TankDriveTeleopDefaultSkid())
+            print("{}Default command set to DriveTeleopDefaultSkid".format(self.logPrefix))
 
     def driveRaw(self, left, right):
         forward = left > 0 and right > 0 
         spdLeft = left
         spdRight = right
+
         if oi.btnEnableLightSensor.get():
             r = self.rSensor.getVoltage()
             l = self.lSensor.getVoltage()
@@ -57,6 +109,7 @@ class TankDrive(Subsystem):
                 else:
                     spdRight = spdRight*spdCorr1
                     spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompSmall))
+                    
             elif abs(l - r) > 0.88 and abs(l - r) <= 1.4 and forward:  # medium tilt
                 if (r > l):       # medium tilt towards right
                     spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompMedium))
@@ -64,6 +117,7 @@ class TankDrive(Subsystem):
                 else:
                     spdRight = spdRight*spdCorr2
                     spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompMedium))
+
             elif abs(l - r) > 1.4 and abs(l - r) <= 2.1 and forward:  # large tilt
                 if (r > l):       # large tilt towards right
                     spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompLarge))
@@ -76,5 +130,7 @@ class TankDrive(Subsystem):
         self.rightSpdCtrl.set(spdRight)
     
     def stop(self):
-        self.leftSpdCtrl.set(0.0)
-        self.rightSpdCtrl.set(0.0)
+        if self.leftSpdCtrl:
+            self.leftSpdCtrl.set(0.0)
+        if self.rightSpdCtrl:
+            self.rightSpdCtrl.set(0.0)
