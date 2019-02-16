@@ -17,7 +17,7 @@ class ElevatorResetEncoders(Command):
         self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.elevator.resetEncoders(self)
+        subsystems.elevator.resetEncoders()
         print("CMD ElevatorResetEncoders: Reset Completed")
 
     def isFinished(self):

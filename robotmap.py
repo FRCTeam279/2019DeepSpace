@@ -77,7 +77,7 @@ nfs.maxSpeedChange = (2 * 0.02) / nfs.minTimeFullThrottleChange
 elevator = ConfigHolder()
 elevator.btmLimitSwitchPort = 6     # DIO port
 elevator.motorPort = 5              # RECONFIGURE
-elevator.btmLimitNormalClosed = False   # switch is normally cosed
+#elevator.btmLimitNormalClosed = False   # switch is normally cosed
 elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
 elevator.holdSpeed = 0.2
@@ -97,8 +97,8 @@ elevator.encReverse = False
 # ramp Subsystem Config
 #---------------------------------------------------------------------------------------------
 ramp = ConfigHolder()
-ramp.solenoidPort1= 1
-ramp.solenoidPort2= 2
+ramp.solenoidPort1 = 4
+ramp.solenoidPort2 = 5
 
 # ----------------------------------------------------------
 # General Sensors Config
@@ -119,4 +119,4 @@ print("RobotMap module completed load")
 # Hatch Grab Config
 #-----------------------------------------------------------
 hatchgrab = ConfigHolder()
-hatchgrab.solenoid = 3      # RECONFIGURE
+hatchgrab.solenoid = 6      # RECONFIGURE, open port is 6, the close port is 7

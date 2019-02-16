@@ -46,11 +46,11 @@ class TankLift(Subsystem):
         #this may not be needed in the actual sequence of final robot since the front will always be extended when the back extends
  
     def retractFront(self):      
-        if self.frontIR.getVoltage() = 1:
+        if self.frontIR.getVoltage() == 1:
             self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
     
     def retractBack(self):
-        if self.backIR.getVoltage() = 1:
+        if self.backIR.getVoltage() == 1:
             self.backCylinder.set(2)    # 1: extend, 2: retract, 0: off
     
     # more functions for sophisticated functionality

@@ -78,11 +78,14 @@ leftDriverStick = None
 rightDriverStick = None
 goGamePad = None
 
-resetYawBtn = None
-btnResetEncoders = None
+btnElevatorLvlOne = None
+btnAutoClimb = None
 btnDriveSlow = None
 btnEnableLightSensor = None
+btnResetEncoders = None
+resetYawBtn = None
 
+#Lift System
 btnRetractAll = None
 btnExtendAll = None
 btnRetractFront = None
@@ -90,12 +93,13 @@ btnExtendFront = None
 btnRetractBack = None
 btnExtendBack = None
 
+#Ramp System
 btnRampExtendTog = None
 btnRampRetractTog = None
+
+#Manipulators
 btnHatchGrabTog = None
 btnCargoGrabTog = None
-btnElevatorLvlOne = None
-btnAutoClimb = None
 
 # ----------------------------------------------------------
 # Init

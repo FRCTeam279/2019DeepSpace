@@ -36,7 +36,7 @@ class Elevator(Subsystem):
     def holdElevator(self):
         if self.btmLimitSwitch.get():
             self.elevatorSpdCtrl.set(0.0)
-            self.elevatorEncoder.reset()
+            #self.elevatorEncoder.reset()
         else:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed) #Add holdSpeed to robotmap
 
