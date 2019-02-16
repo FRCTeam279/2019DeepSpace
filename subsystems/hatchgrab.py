@@ -3,7 +3,7 @@ import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
 from wpilib import Solenoid
-#from commands.hatchgrabteleopdefault import HatchGrabTeleopDefault    # This doesnt exist
+from commands.hatchgrabteleopdefault import HatchGrabTeleopDefault
 
 import subsystems
 import robotmap
@@ -24,9 +24,9 @@ class HatchGrab(Subsystem):
     def HatchOpen(self):
         self.hatchGrabSolenoid.set(1)   # 1: extend, 2: retract, 0: off
 
-    def retractRamp(self): 
+    def HatchClose(self): 
         self.hatchGrabSolenoid.set(2)   # 1: extend, 2: retract, 0: off
 
-    #def initDefaultCommand(self):
-    #    self.setDefaultCommand(HatchGrabTeleopDefault())
-    #    print("{}Default command set to CargoGrab".format(self.logPrefix)) 
+    def initDefaultCommand(self):
+        self.setDefaultCommand(HatchGrabTeleopDefault())
+        print("{}Default command set to HatchGrabTeleopDefault".format(self.logPrefix)) 

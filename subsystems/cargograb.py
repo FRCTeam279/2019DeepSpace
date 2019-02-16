@@ -45,5 +45,9 @@ def openCargoHold(self,openbit):
 def closeCargoHold(self,closebit):
     self.leftservo.setAngle(closebit)
     self.rightservo.setAngle(closebit)
+
+#def cargoGrabStop(self)
+#    self.leftservo.
+#    self.rightservo.
         
 

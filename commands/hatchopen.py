@@ -12,7 +12,7 @@ class HatchOpen(Command):
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        self.hatchgrab.HatchOpen(1)
+        subsystems.hatchgrab.HatchOpen()
 
     def isFinished(self):
         return True
