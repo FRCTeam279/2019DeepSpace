@@ -14,9 +14,9 @@ class HatchGrabTeleopDefault(Command):
 
     def execute(self):
         hatchToggle = False
-        if (oi.btnHatchGrabTog.get() == True) and (hatchToggle == False):
+        if (oi.btnHatchGrabTog == True) and (hatchToggle == False):
             hatchToggle = True
-        elif (oi.btnHatchGrabTog.get() == True) and (hatchToggle == True):
+        elif (oi.btnHatchGrabTog == True) and (hatchToggle == True):
             hatchToggle = False
         
         if hatchToggle == True:

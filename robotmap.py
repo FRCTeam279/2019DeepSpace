@@ -121,11 +121,11 @@ cargograb = ConfigHolder()
 cargograb.rightServoPort = 5    # RECONFIGURE
 cargograb.leftServoPort = 6     # RECONFIGURE
 
-print("RobotMap module completed load")
-
 #-----------------------------------------------------------
 # Hatch Grab Config
 #-----------------------------------------------------------
 hatchgrab = ConfigHolder()
 hatchgrab.solenoidExtendPort = 6
 hatchgrab.solenoidRetractPort = 7
+
+print("RobotMap module completed load")

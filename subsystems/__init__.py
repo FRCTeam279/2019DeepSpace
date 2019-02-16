@@ -30,7 +30,7 @@ def init():
     global drivelift
     global elevator
     global ramp
-    global cargograb
+    #global cargograb
     global hatchgrab
 
     '''
@@ -44,6 +44,6 @@ def init():
     drivelift = TankLift()
     elevator = Elevator()
     ramp = Ramp()
-    cargograb = CargoGrab()
+    #cargograb = CargoGrab()
     hatchgrab = HatchGrab()
 
