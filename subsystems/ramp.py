@@ -12,7 +12,7 @@ class Ramp(Subsystem):
         print("Ramp: init called")
         super().__init__('Ramp')
         self.logPrefix= 'Ramp: '
-        self.rampSolenoid = wpilib.DoubleSolenoid(1,robotmap.ramp.solenoidPort1, robotmap.ramp.solenoidPort2)
+        self.rampSolenoid = wpilib.DoubleSolenoid(1, robotmap.ramp.solenoidExtendPort, robotmap.ramp.solenoidRetractPort)
  
 
     def extendRamp(self):

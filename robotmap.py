@@ -20,13 +20,19 @@ driveLine = ConfigHolder()
 driveLine.leftMotorPort = 0
 driveLine.rightMotorPort = 1
 
-driveLine.frontIRPort = 8          
-driveLine.backIRPort = 9          
+driveLine.frontIRPort = 0       # IN ANALOG I/O        
+driveLine.backIRPort = 1        # IN ANALOG I/O        
 driveLine.spdCompSmall = .4
 driveLine.spdCompMedium = .6
 driveLine.spdCompLarge = .8
-driveLine.RtSensPort = 3      # Line detect analog input right-sensor port 
-driveLine.LftSensPort = 2     # Line detect analog input left-sensor port
+driveLine.RtSensPort = 3        # Line detect analog input right-sensor port 
+driveLine.LftSensPort = 2       # Line detect analog input left-sensor port
+
+#Driveline solenoid lifts
+driveLine.solenoidExtendFrontPort = 1
+driveLine.solenoidRetractFrontPort = 0
+driveLine.solenoidExtendBackPort = 3
+driveLine.solenoidRetractBackPort = 2
 
 # the new MecanumDrive library from WPILIP inverts the right motors by default, so inversion is often not needed.
 # Be sure to view the wheel direction when moving side to side and forward/backward on mounts before testing on ground to verify
@@ -70,41 +76,35 @@ nfs.minTimeFullThrottleChange = 1.5
 nfs.maxSpeedChange = (2 * 0.02) / nfs.minTimeFullThrottleChange
 
 # ----------------------------------------------------------
-# Lift Subsystem Config
-# ----------------------------------------------------------
-lift = ConfigHolder()
-lift.raiseBtnAll = 1
-
-# ----------------------------------------------------------
 # elevator Subsystem Config
 # ----------------------------------------------------------
 
 #reconfigure these ports
 elevator = ConfigHolder()
 elevator.btmLimitSwitchPort = 6     # DIO port
-elevator.motorPort = 5      #???
-elevator.btmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
-elevator.holdSpeed = 0.2
-elevator.elevatorDeadZone = .05
+elevator.motorPort = 5              # RECONFIGURE
+#elevator.btmLimitNormalClosed = False   # switch is normally cosed
 elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
+elevator.holdSpeed = 0.2
 
-#reconfigure these ports
-elevator.encAPort = 1
-elevator.encBPort = 2
+elevator.maxHeight = 48         # inches, calculate this
+elevator.lvlOneHeight = 24      # inches, calculate this
+elevator.margin = 0.3           # A tolerance when going to the level 1 height
+elevator.elevatorDeadZone = .05
+elevator.inchesPerTick = 0.1    # have to calculate this w/ radius once it is actually built
+
+elevator.encAPort = 4
+elevator.encBPort = 5
 elevator.encType = wpilib.Encoder.EncodingType.k4X
 elevator.encReverse = False
-elevator.maxHeight = 48 #change once built, should be in inches since encoder measures ticks per inch
-
-elevator.inchesPerTick = 0.1        #have to calculate this w/ radius once it is actually built
-#drive wheel radius?
 
 #---------------------------------------------------------------------------------------------
 # ramp Subsystem Config
 #---------------------------------------------------------------------------------------------
 ramp = ConfigHolder()
-ramp.solenoidPort1= 1
-ramp.solenoidPort2= 2
+ramp.solenoidExtendPort = 4
+ramp.solenoidRetractPort = 5
 
 # ----------------------------------------------------------
 # General Sensors Config
@@ -116,8 +116,8 @@ sensors.hasAHRS = True
 # Cargo Grab Config
 #------------------------------------------------------------
 cargograb = ConfigHolder()
-cargograb.rightServoPort = 5 #Can be changed
-cargograb.leftServoPort = 6 #Can be changed
+cargograb.rightServoPort = 5    # RECONFIGURE
+cargograb.leftServoPort = 6     # RECONFIGURE
 
 print("RobotMap module completed load")
 
@@ -125,4 +125,5 @@ print("RobotMap module completed load")
 # Hatch Grab Config
 #-----------------------------------------------------------
 hatchgrab = ConfigHolder()
-hatchgrab.solenoid=3
+hatchgrab.solenoidExtendPort = 6
+hatchgrab.solenoidRetractPort = 7

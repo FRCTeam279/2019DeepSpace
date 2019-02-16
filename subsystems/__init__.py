@@ -40,6 +40,6 @@ def init():
     driveline = TankDrive()
     drivelift = TankLift()
     elevator = Elevator()
-    #ramp = Ramp()
+    ramp = Ramp()
     #cargograb = CargoGrab()
 

@@ -17,10 +17,10 @@ class TankLift(Subsystem):
         super().__init__('TankLift')
         self.logPrefix = "TankLift: "
 
-        self.frontCylinder = wpilib.DoubleSolenoid(1,0,1) # 1st arg= CAN ID=1, then takes ports on pcm to energize solenoid
-        self.backCylinder =  wpilib.DoubleSolenoid(1,2,3) # 1st arg= CAN ID=1, ...
-        self.frontIR = wpilib.DigitalInput(robotmap.driveLine.frontIRPort)
-        self.backIR = wpilib.DigitalInput(robotmap.driveLine.backIRPort)
+        self.frontCylinder = wpilib.DoubleSolenoid(1, robotmap.driveLine.solenoidRetractFrontPort, robotmap.driveLine.solenoidExtendFrontPort) # 1st arg= CAN ID=1, then takes ports on pcm to energize solenoid
+        self.backCylinder =  wpilib.DoubleSolenoid(1, robotmap.driveLine.solenoidRetractBackPort, robotmap.driveLine.solenoidExtendBackPort)
+        self.frontIR = wpilib.AnalogInput(robotmap.driveLine.frontIRPort)
+        self.backIR = wpilib.AnalogInput(robotmap.driveLine.backIRPort)
 
     # ------------------------------------------------------------------------------------------------------------------
     
@@ -46,11 +46,11 @@ class TankLift(Subsystem):
         #this may not be needed in the actual sequence of final robot since the front will always be extended when the back extends
  
     def retractFront(self):      
-        if self.frontIR.get() == False:
+        if self.frontIR.getVoltage() == 1:
             self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
     
     def retractBack(self):
-        if self.backIR.get() == False:
+        if self.backIR.getVoltage() == 1:
             self.backCylinder.set(2)    # 1: extend, 2: retract, 0: off
     
     # more functions for sophisticated functionality

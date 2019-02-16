@@ -6,9 +6,12 @@ from commands.retractall import RetractAll
 from commands.extendfront import ExtendFront
 from commands.extendback import ExtendBack
 from commands.retractfront import RetractFront
+from commands.retractback import RetractBack
 from commands.rampextend import RampExtend
 from commands.rampretract import RampRetract
 from commands.autoclimb import AutoClimb
+from commands.elevatormovelvlone import ElevatorMoveLvlOne
+from commands.elevatorresetencoders import ElevatorResetEncoders
 import robotmap
 
 
@@ -47,7 +50,7 @@ config.btnEnableLightSensorIndex = 2
 config.btnAutoClimbIndex = 5
 
 # Right Joystick
-config.btnResetYawAngleIndex = 7 #temporarily changed from 2 to 7
+config.btnResetYawAngleIndex = 7 #changed from 2 to 7
 config.btnExtendAllIndex = 1
 config.btnRetractAllIndex = 2
 config.btnExtendFrontIndex = 3
@@ -56,13 +59,16 @@ config.btnRetractFrontIndex = 5
 config.btnRetractBackIndex = 6
 
 # GO Gamepad (Logitech)
-config.btnHatchGrabTogIndex = 1    # 1 = A
-config.btnCargoGrabOpenTogIndex = 3    # 3 = X
-config.btnCargoGrabCloseTogIndex = 5 #????
-config.btnRampExtendTogIndex = 6
-config.btnRampRetractTogIndex = 7
+config.btnHatchGrabTogIndex = 1         # 1 = A
 
-config.axisElevatorIndex = 9 #???
+config.btnCargoGrabOpenTogIndex = 3     # 3 = X
+config.btnCargoGrabCloseTogIndex = 2    # 2 = B
+
+config.btnRampExtendTogIndex = 5        # 5 = LB
+config.btnRampRetractTogIndex = 6       # 6 = RB
+
+config.axisElevatorIndex = 1            # 1 = LY axis
+config.btnElevatorLvlOneIndex = 4       # 4 = Y
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -71,20 +77,29 @@ config.axisElevatorIndex = 9 #???
 leftDriverStick = None
 rightDriverStick = None
 goGamePad = None
-resetYawBtn = None
-btnResetEncoders = None
-btnDriveSlow = None
-btnLift = None             # added to eject/retract cylinder(s)
-btnRetract = None
-btnEnableLightSensor = None
 
+btnElevatorLvlOne = None
+btnAutoClimb = None
+btnDriveSlow = None
+btnEnableLightSensor = None
+btnResetEncoders = None
+resetYawBtn = None
+
+#Lift System
+btnRetractAll = None
+btnExtendAll = None
+btnRetractFront = None
+btnExtendFront = None
+btnRetractBack = None
+btnExtendBack = None
+
+#Ramp System
 btnRampExtendTog = None
-btnRampRetractTog = None 
+btnRampRetractTog = None
+
+#Manipulators
 btnHatchGrabTog = None
 btnCargoGrabTog = None
-axisElevator = None
-
-btnAutoClimb = None
 
 # ----------------------------------------------------------
 # Init
@@ -120,6 +135,7 @@ def init():
     # ----------------------------------------------------------
     # Driver Controls
     # ----------------------------------------------------------
+
     #global resetYawBtn
     #resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
     #resetYawBtn.whenPressed(NavxResetYawAngle())
@@ -130,13 +146,45 @@ def init():
     global btnEnableLightSensor
     btnEnableLightSensor = JoystickButton(leftDriverStick, config.btnEnableLightSensorIndex)
 
+    global btnCargoGrabTog
+    btnCargoGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
+    btnCargoGrabTog.whenPressed(ExtendBack())
+
+    global btnAutoClimb
+    btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)
+    btnAutoClimb.whileHeld(AutoClimb())
+
+    global btnElevatorLvlOne
+    btnElevatorLvlOne = JoystickButton(goGamePad, config.btnElevatorLvlOneIndex)
+    btnElevatorLvlOne.whenPressed(ElevatorMoveLvlOne())
+
+    global btnResetEncoders
+    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+    btnResetEncoders.whenPressed(ElevatorResetEncoders())
+
+# ----------------------------------------------------------
+# Ramp system
+# ----------------------------------------------------------
+
+    global btnRampExtendTog
+    btnRampExtendTog = JoystickButton(goGamePad, config.btnRampExtendTogIndex)
+    btnRampExtendTog.whenPressed(RampExtend())
+
+    global btnRampRetractTog
+    btnRampRetractTog = JoystickButton(goGamePad, config.btnRampRetractTogIndex)
+    btnRampRetractTog.whenPressed(RampRetract())
+
+# ----------------------------------------------------------
+# Lift system
+# ----------------------------------------------------------
+
     global btnExtendAll
     btnExtendAll = JoystickButton(rightDriverStick, config.btnExtendAllIndex)
     btnExtendAll.whenPressed(ExtendAll())
 
-    global btnRetract
-    btnRetract = JoystickButton(rightDriverStick, config.btnRetractAllIndex)
-    btnRetract.whenPressed(RetractAll())
+    global btnRetractAll
+    btnRetractAll = JoystickButton(rightDriverStick, config.btnRetractAllIndex)
+    btnRetractAll.whenPressed(RetractAll())
 
     global btnExtendFront
     btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
@@ -146,39 +194,13 @@ def init():
     btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
     btnExtendBack.whenPressed(ExtendBack())
 
+    global btnRetractBack
+    btnRetractBack = JoystickButton(rightDriverStick, config.btnRetractBackIndex)
+    btnRetractBack.whenPressed(RetractBack())
+
     global btnRetractFront
     btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
     btnRetractFront.whenPressed(RetractFront())
-
-    global btnCargoGrabTog
-    btnCargoGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
-    btnCargoGrabTog.whenPressed(ExtendBack())
-
-    global btnAutoClimb
-    btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)
-    btnAutoClimb.whileHeld(AutoClimb())
-    
-    #global btnResetEncoders
-    #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    #btnResetEncoders.whenPressed(TankDriveResetEncoders())
-    
-    #global axisElevator
-    #axisElevator = joystickAxis(goGamePad, config.axisElevatorIndex)    
-
-    #global btnResetEncoders
-    #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    #btnResetEncoders.whenPressed(TankDriveResetEncoders())
-
-
-
-    # These variable names are inconsistent, need to be fixed!!!!
-    #global btnRampExtendTog
-    #btnRampExtendTog = JoystickButton(goGamePad, config.btnRampExtendTogIndex)
-    #btnRampExtendTog.whenPressed(RampExtend())
-
-    #global btnRampRetractTog
-    #btnRampRetractTog = JoystickButton(goGamePad, config.btnRampRetractTogIndex)
-    #btnRampRetractTog.whenPressed(RampRetract())
 
 # ----------------------------------------------------------
 # Utility Functions
@@ -268,12 +290,12 @@ def getRawThrottle():
     :return:
     The float value of the throttle between -1.0 and 1.0
     """
-    val = leftDriverStick.getY()  # was set on the left JS
+    val = leftDriverStick.getY()
     if val != 0.0:
         val *= -1.0
     return val
 
 
 def getRawTurn():
-    return rightDriverStick.getX()   # was set on the right JS
+    return rightDriverStick.getX()
 
