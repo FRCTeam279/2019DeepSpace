@@ -17,7 +17,7 @@ class Elevator(Subsystem):
         self.logPrefix = "Elevator: "
 
         try:
-            self.elevatorSpdCtrl = wpilib.VictorSP(robotmap.elevator.motorPort)
+            self.elevatorSpdCtrl = wpilib.Spark(robotmap.elevator.motorPort)
         except Exception as e:
             print("{}Exception caught instantiating elevator speed controller. {}".format(self.logPrefix, e))
             if not wpilib.DriverStation.getInstance().isFmsAttached():
