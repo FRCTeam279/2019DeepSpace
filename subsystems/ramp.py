@@ -15,7 +15,7 @@ class Ramp(Subsystem):
         super().__init__('Ramp')
         self.logPrefix= 'Ramp: '
 
-        self.rampToggle = False     # Default placeholder
+        self.rampToggle = False     # Default
 
         try:
             self.rampSolenoid = wpilib.DoubleSolenoid(1, robotmap.ramp.solenoidExtendPort, robotmap.ramp.solenoidRetractPort)
@@ -23,15 +23,14 @@ class Ramp(Subsystem):
             print("{}Exception caught instantiating ramp solenoid. {}".format(self.logPrefix, e))
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
-        
 
     def rampTogFunction(self):
         if self.rampToggle == False:
-            rampToggle = True
-            return
-        elif self.rampToggle == True:
-            rampToggle = False
-            return
+            self.rampToggle = True
+        else:
+            self.rampToggle = False
+        
+        return self.rampToggle
 
     def extendRamp(self):
         self.rampSolenoid.set(1)   # 1: extend, 2: retract, 0: off
