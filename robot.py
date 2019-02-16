@@ -43,22 +43,22 @@ class MyRobot(CommandBasedRobot):
 
     def autonomousPeriodic(self):
         super().autonomousPeriodic()
-        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
-        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
+        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
+        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         # optionally do stuff like display data to smart dashboard here while in autonomous
 
     def teleopPeriodic(self):
         Scheduler.getInstance().run()
-        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
-        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
+        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
+        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         #optionally do stuff like display data to smart dashboard here while in teleop
 
     def disabledPeriodic(self):
         Scheduler.getInstance().run()
-        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
-        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
+        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
+        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         # optionally do stuff like display data to smart dashboard here while in disabled
 
