@@ -48,7 +48,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
-        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatch.hatchToggle)
+        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         # optionally do stuff like display data to smart dashboard here while in autonomous
 
@@ -59,7 +59,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
-        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatch.hatchToggle)
+        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         #optionally do stuff like display data to smart dashboard here while in teleop
 
@@ -70,7 +70,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
-        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatch.hatchToggle)
+        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         # optionally do stuff like display data to smart dashboard here while in disabled
 

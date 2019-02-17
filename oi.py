@@ -13,7 +13,6 @@ from commands.autoclimb import AutoClimb
 from commands.elevatormovelvlone import ElevatorMoveLvlOne
 from commands.elevatorresetencoders import ElevatorResetEncoders
 from commands.ramptoggletrigger import RampToggleTrigger
-from commands.cargotoggletrigger import CargoToggleTrigger
 import robotmap
 
 
