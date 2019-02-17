@@ -13,6 +13,7 @@ from commands.autoclimb import AutoClimb
 from commands.elevatormovelvlone import ElevatorMoveLvlOne
 from commands.elevatorresetencoders import ElevatorResetEncoders
 from commands.ramptoggletrigger import RampToggleTrigger
+from commands.cargotoggletrigger import CargoToggleTrigger
 import robotmap
 
 
@@ -62,12 +63,13 @@ config.btnRetractBackIndex = 6
 # GO Gamepad (Logitech)
 config.btnHatchGrabTogIndex = 1         # 1 = A
 
-config.btnCargoGrabOpenTogIndex = 3     # 3 = X
-config.btnCargoGrabCloseTogIndex = 2    # 2 = B
+#config.btnCargoGrabOpenTogIndex = 3     # 3 = X
+#config.btnCargoGrabCloseTogIndex = 2    # 2 = B
+config.btnCargoGrabTogIndex = 3          # 3 = X
 
 #config.btnRampExtendTogIndex = 5        # 5 = LB
 #config.btnRampRetractTogIndex = 6       # 6 = RB
-config.btnRampTogIndex = 5              # 5 = LB
+config.btnRampTogIndex = 5               # 5 = LB
 
 config.axisCargoGrabIndex = 5           # 5 = RY axis
 config.axisElevatorIndex = 1            # 1 = LY axis
@@ -104,6 +106,7 @@ btnRampTog = None
 #Manipulators
 btnHatchGrabTog = None
 axisCargoGrab = None
+btnCargoGrabTog = None
 
 # ----------------------------------------------------------
 # Init
@@ -162,6 +165,10 @@ def init():
     btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     btnResetEncoders.whenPressed(ElevatorResetEncoders())
 
+    global btnCargoGrabTog
+    btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
+    btnCargoGrabTog.whenPressed(CargoToggleTrigger())
+
 # ----------------------------------------------------------
 # Ramp system
 # ----------------------------------------------------------
@@ -176,7 +183,7 @@ def init():
 
     global btnRampTog
     btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
-    btnRampTog.whenPressed(RampToggleTrigger())
+    #btnRampTog.whenPressed(RampToggleTrigger())
     
 # ----------------------------------------------------------
 # Lift system
