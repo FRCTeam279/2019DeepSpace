@@ -211,7 +211,7 @@ def init():
 
     #global btnTogAllLift
     #btnTogAllLift = JoystickButton(rightDriverStick, config.btnTogAllLiftIndex)
-    #btnTogAllLift.whenPressed()
+    #btnTogAllLift.whenPressed(AllSolLiftSystem())
 
     global btnExtendAll
     btnExtendAll = JoystickButton(rightDriverStick, config.btnExtendAllIndex)
@@ -224,7 +224,7 @@ def init():
 
     #global btnTogFrontLift
     #btnTogFrontLift = JoystickButton(rightDriverStick, config.btnTogFrontLiftIndex)
-    #btnTogFrontLift.whenPressed()
+    #btnTogFrontLift.whenPressed(FrontSolLiftSystem())
 
     global btnExtendFront
     btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
@@ -237,7 +237,7 @@ def init():
 
     #global btnTogBackLift
     #btnTogBackLift = JoystickButton(rightDriverStick, config.btnTogBackLiftIndex)
-    #btnTogBackLift.whenPressed()
+    #btnTogBackLift.whenPressed(BackSolLiftSystem())
 
     global btnExtendBack
     btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
