@@ -9,18 +9,17 @@ class CargoTeleopDefault(Command):
 
     def __init__(self):
             super().__init__('CargoTeleopDefault')
-            self.requires(subsystems.elevator)
+            self.requires(subsystems.cargograb)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        #if subsystems.cargograb.cargoToggle == True:
-        #    subsystems.cargograb.openCargoHold()
-        #else:
-        #    subsystems.cargograb.closeCargoHold()
+        if subsystems.cargograb.cargoToggle == True:
+            subsystems.cargograb.openCargoHold()
+        else:
+            subsystems.cargograb.closeCargoHold()
 
         #speed = -(oi.goGamePad.getRawAxis(oi.config.axisCargoGrabIndex))
-        pass
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands

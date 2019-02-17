@@ -12,8 +12,9 @@ class RampToggleTrigger(Command):
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.ramp.rampTogFunction()
-
+        #subsystems.ramp.rampTogFunction()
+        pass
+        
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
         return True

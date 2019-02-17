@@ -43,9 +43,9 @@ class CargoGrab(Subsystem):
             
         return self.cargoToggle
 
-    #def initDefaultCommand(self):
-    #    self.setDefaultCommand(CargoTeleopDefault)
-    #    print("{}Default command set to CargoGrab".format(self.logPrefix)) 
+    def initDefaultCommand(self):
+        self.setDefaultCommand(CargoTeleopDefault())
+        print("{}Default command set to CargoGrab".format(self.logPrefix)) 
 
     def openCargoHold(self):
         self.leftservo.setAngle(self.openAngle)
