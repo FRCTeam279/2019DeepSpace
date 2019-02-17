@@ -53,27 +53,32 @@ config.btnAutoClimbIndex = 5
 
 # Right Joystick
 config.btnResetYawAngleIndex = 7 #changed from 2 to 7
+
+#config.btnTogAllLiftIndex = 1
 config.btnExtendAllIndex = 1
 config.btnRetractAllIndex = 2
-config.btnExtendFrontIndex = 3
-config.btnExtendBackIndex = 4
+
+#config.btnTogFrontLiftIndex = 3
 config.btnRetractFrontIndex = 5
+config.btnExtendFrontIndex = 3
+
+#config.btnTogBackLiftIndex = 3
 config.btnRetractBackIndex = 6
+config.btnExtendBackIndex = 4
 
 # GO Gamepad (Logitech)
 config.btnHatchGrabTogIndex = 1         # 1 = A
-
-#config.btnCargoGrabOpenTogIndex = 3     # 3 = X
-#config.btnCargoGrabCloseTogIndex = 2    # 2 = B
 config.btnCargoGrabTogIndex = 3          # 3 = X
+config.btnRampTogIndex = 2               # 2 = B
+
+config.axisElevatorIndex = 1            # 1 = LY axis
+config.btnElevatorLvlOneIndex = 4       # 4 = Y
 
 #config.btnRampExtendTogIndex = 5        # 5 = LB
 #config.btnRampRetractTogIndex = 6       # 6 = RB
-config.btnRampTogIndex = 5               # 5 = LB
-
-config.axisCargoGrabIndex = 5           # 5 = RY axis
-config.axisElevatorIndex = 1            # 1 = LY axis
-config.btnElevatorLvlOneIndex = 4       # 4 = Y
+#config.btnCargoGrabOpenTogIndex = 3     # 3 = X
+#config.btnCargoGrabCloseTogIndex = 2    # 2 = B
+#config.axisCargoGrabIndex = 5           # 5 = RY axis
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -91,22 +96,27 @@ btnResetEncoders = None
 resetYawBtn = None
 
 #Lift System
+#btnTogAllLift = None
 btnRetractAll = None
 btnExtendAll = None
+
+#btnTogFrontLift = None
 btnRetractFront = None
 btnExtendFront = None
+
+#btnTogBackLift = None
 btnRetractBack = None
 btnExtendBack = None
 
 #Ramp System
-#btnRampExtendTog = None
-#btnRampRetractTog = None
-btnRampTog = None
+btnRampExtendTog = None
+btnRampRetractTog = None
+#btnRampTog = None
 
 #Manipulators
-btnHatchGrabTog = None
 axisCargoGrab = None
 btnCargoGrabTog = None
+btnHatchGrabTog = None
 
 # ----------------------------------------------------------
 # Init
@@ -139,35 +149,41 @@ def init():
         print('OI: Error - Could not instantiate GO GamePad on USB port 2!!!')
 
 
-    # ----------------------------------------------------------
-    # Driver Controls
-    # ----------------------------------------------------------
+# ----------------------------------------------------------
+# Driver Controls
+# ----------------------------------------------------------
 
     #global resetYawBtn
     #resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
     #resetYawBtn.whenPressed(NavxResetYawAngle())
 
-    global btnDriveSlow
-    btnDriveSlow = JoystickButton(leftDriverStick, config.btnDriveSlow)
+    #global btnDriveSlow
+    #btnDriveSlow = JoystickButton(leftDriverStick, config.btnDriveSlow)
     
     global btnEnableLightSensor
     btnEnableLightSensor = JoystickButton(leftDriverStick, config.btnEnableLightSensorIndex)
-
-    global btnAutoClimb
-    btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)
-    btnAutoClimb.whileHeld(AutoClimb())
-
-    global btnElevatorLvlOne
-    btnElevatorLvlOne = JoystickButton(goGamePad, config.btnElevatorLvlOneIndex)
-    btnElevatorLvlOne.whenPressed(ElevatorMoveLvlOne())
 
     global btnResetEncoders
     btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     btnResetEncoders.whenPressed(ElevatorResetEncoders())
 
+# ----------------------------------------------------------
+# Manipulators (Cargo and Hatch)
+# ----------------------------------------------------------
+
     global btnCargoGrabTog
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
-    btnCargoGrabTog.whenPressed(CargoToggleTrigger())
+
+    global btnHatchGrabTog
+    btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
+
+# ----------------------------------------------------------
+# Elevator system
+# ----------------------------------------------------------
+
+    global btnElevatorLvlOne
+    btnElevatorLvlOne = JoystickButton(goGamePad, config.btnElevatorLvlOneIndex)
+    btnElevatorLvlOne.whenPressed(ElevatorMoveLvlOne())
 
 # ----------------------------------------------------------
 # Ramp system
@@ -189,6 +205,15 @@ def init():
 # Lift system
 # ----------------------------------------------------------
 
+    global btnAutoClimb
+    btnAutoClimb = JoystickButton(leftDriverStick, config.btnAutoClimbIndex)
+    btnAutoClimb.whileHeld(AutoClimb())
+
+
+    #global btnTogAllLift
+    #btnTogAllLift = JoystickButton(rightDriverStick, config.btnTogAllLiftIndex)
+    #btnTogAllLift.whenPressed()
+
     global btnExtendAll
     btnExtendAll = JoystickButton(rightDriverStick, config.btnExtendAllIndex)
     btnExtendAll.whenPressed(ExtendAll())
@@ -197,6 +222,10 @@ def init():
     btnRetractAll = JoystickButton(rightDriverStick, config.btnRetractAllIndex)
     btnRetractAll.whenPressed(RetractAll())
 
+
+    #global btnTogFrontLift
+    #btnTogFrontLift = JoystickButton(rightDriverStick, config.btnTogFrontLiftIndex)
+    #btnTogFrontLift.whenPressed()
 
     global btnExtendFront
     btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
@@ -207,6 +236,10 @@ def init():
     btnRetractFront.whenPressed(RetractFront())
 
 
+    #global btnTogBackLift
+    #btnTogBackLift = JoystickButton(rightDriverStick, config.btnTogBackLiftIndex)
+    #btnTogBackLift.whenPressed()
+
     global btnExtendBack
     btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
     btnExtendBack.whenPressed(ExtendBack())
@@ -214,6 +247,8 @@ def init():
     global btnRetractBack
     btnRetractBack = JoystickButton(rightDriverStick, config.btnRetractBackIndex)
     btnRetractBack.whenPressed(RetractBack())
+
+
 
 # ----------------------------------------------------------
 # Utility Functions
