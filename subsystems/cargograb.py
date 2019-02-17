@@ -6,6 +6,7 @@ from commands.cargoteleopdefault import CargoTeleopDefault
 
 import subsystems
 import robotmap
+import oi
 
 class CargoGrab(Subsystem):
    
@@ -28,18 +29,19 @@ class CargoGrab(Subsystem):
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
         
-        #self.cargoToggle = False
+        self.cargoToggle = False
         self.openAngle = robotmap.cargograb.openAngle
         self.closeAngle = robotmap.cargograb.closeAngle
 
 #-----------------------------------------------------------------------------------------
-    #def cargoTogFunction(self):
-        #if self.cargoToggle == False:
-        #    self.cargoToggle = True
-        #else:
-        #    self.cargoToggle = False
-        
-        #return self.cargoToggle
+    def cargoTogFunction(self):
+        if oi.btnCargoGrabTog:
+            if self.cargoToggle == False:
+                self.cargoToggle = True
+            else:
+                self.cargoToggle = False
+            
+        return self.cargoToggle
 
     #def initDefaultCommand(self):
     #    self.setDefaultCommand(CargoTeleopDefault)

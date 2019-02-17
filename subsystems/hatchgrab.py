@@ -7,6 +7,7 @@ from commands.hatchgrabteleopdefault import HatchGrabTeleopDefault
 
 import subsystems
 import robotmap
+import oi
 
 class HatchGrab(Subsystem):
     def __init__(self):
@@ -22,6 +23,15 @@ class HatchGrab(Subsystem):
                 raise       
 
         self.hatchToggle = False
+
+    def hatchTogFunction(self):
+        if oi.btnHatchGrabTog:
+            if self.hatchToggle == False:
+                self.hatchToggle = True
+            else:
+                self.hatchToggle = False
+            
+        return self.hatchToggle
 
     def HatchOpen(self):
         self.hatchGrabSolenoid.set(1)   # 1: extend, 2: retract, 0: off
