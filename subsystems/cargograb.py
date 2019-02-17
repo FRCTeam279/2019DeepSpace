@@ -1,5 +1,3 @@
-# Two servos acting as a claw, picking up and carrying cargo
-# Connected to elevator
 import math
 import wpilib
 from wpilib.command.subsystem import Subsystem
@@ -29,24 +27,34 @@ class CargoGrab(Subsystem):
             print("{}Exception caught instantiating right servo. {}".format(self.logPrefix, e))
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
+        
+        #self.cargoToggle = False
+        self.openAngle = robotmap.cargograb.openAngle
+        self.closeAngle = robotmap.cargograb.closeAngle
 
 #-----------------------------------------------------------------------------------------
-
-
-def initDefaultCommand(self):
-    self.setDefaultCommand(CargoTeleopDefault)
-    print("{}Default command set to CargoGrab".format(self.logPrefix)) 
-
-def openCargoHold(self, openbit):
-    self.leftservo.setAngle(openbit)
-    self.rightservo.setAngle(openbit)
-
-def closeCargoHold(self, closebit):
-    self.leftservo.setAngle(closebit)
-    self.rightservo.setAngle(closebit)
-
-#def cargoGrabStop(self)
-#    self.leftservo.
-#    self.rightservo.
+    #def cargoTogFunction(self):
+        #if self.cargoToggle == False:
+        #    self.cargoToggle = True
+        #else:
+        #    self.cargoToggle = False
         
+        #return self.cargoToggle
+
+    #def initDefaultCommand(self):
+    #    self.setDefaultCommand(CargoTeleopDefault)
+    #    print("{}Default command set to CargoGrab".format(self.logPrefix)) 
+
+    def openCargoHold(self):
+        self.leftservo.setAngle(self.openAngle)
+        self.rightservo.setAngle(self.openAngle)
+
+    def closeCargoHold(self):
+        self.leftservo.setAngle(self.closeAngle)
+        self.rightservo.setAngle(self.closeAngle)
+
+    #def cargoGrabStop(self)
+    #    self.leftservo.
+    #    self.rightservo.
+            
 

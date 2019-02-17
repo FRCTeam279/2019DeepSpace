@@ -48,6 +48,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
+        #SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatch.hatchToggle)
         # optionally do stuff like display data to smart dashboard here while in autonomous
 
     def teleopPeriodic(self):
@@ -57,6 +58,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
+        #SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatch.hatchToggle)
         #optionally do stuff like display data to smart dashboard here while in teleop
 
     def disabledPeriodic(self):
@@ -66,6 +68,7 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
+        #SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatch.hatchToggle)
         # optionally do stuff like display data to smart dashboard here while in disabled
 
     def testPeriodic(self):

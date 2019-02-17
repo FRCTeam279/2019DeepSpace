@@ -121,6 +121,8 @@ sensors.hasAHRS = True
 cargograb = ConfigHolder()
 cargograb.rightServoPort = 5    # RECONFIGURE
 cargograb.leftServoPort = 6     # RECONFIGURE
+cargograb.openAngle = 90        # RECONFIGURE
+cargograb.closeAngle = 0        # RECONFIGURE
 
 #-----------------------------------------------------------
 # Hatch Grab Config

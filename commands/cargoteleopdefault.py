@@ -14,12 +14,17 @@ class CargoTeleopDefault(Command):
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        speed = -(oi.goGamePad.getRawAxis(oi.config.axisCargoGrabIndex))
-        #subsystems.cargograb.move(speed) we dont need this, it should be TOGGLED with a button
+        #if subsystems.cargograb.cargoToggle == True:
+        #    subsystems.cargograb.openCargoHold()
+        #else:
+        #    subsystems.cargograb.closeCargoHold()
+
+        #speed = -(oi.goGamePad.getRawAxis(oi.config.axisCargoGrabIndex))
+        pass
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
         return False
 
-    def interrupted(self):
-        subsystems.cargograb.stop()
+    #def interrupted(self):
+    #    subsystems.cargograb.stop()
