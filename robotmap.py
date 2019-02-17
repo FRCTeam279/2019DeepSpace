@@ -100,6 +100,7 @@ elevator.encAPort = 4
 elevator.encBPort = 5
 elevator.encType = wpilib.Encoder.EncodingType.k4X
 elevator.encReverse = False
+#100 ticks per revolution, a 2 inch diameter pulley (1.0in radius)
 
 #---------------------------------------------------------------------------------------------
 # ramp Subsystem Config
