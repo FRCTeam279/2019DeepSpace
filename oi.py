@@ -111,7 +111,7 @@ btnExtendBack = None
 #Ramp System
 btnRampExtendTog = None
 btnRampRetractTog = None
-#btnRampTog = None
+btnRampTog = None
 
 #Manipulators
 axisCargoGrab = None
