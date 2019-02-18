@@ -90,16 +90,16 @@ elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
 elevator.holdSpeed = 0
 
-elevator.maxHeight = 48         # inches, calculate this
+elevator.maxHeight = 230        # encoder counts
 elevator.lvlOneHeight = 24      # inches, calculate this
 elevator.margin = 0.3           # A tolerance when going to the level 1 height
 elevator.elevatorDeadZone = .05
-elevator.inchesPerTick = 0.1    # have to calculate this w/ radius once it is actually built
+elevator.inchesPerTick = 1    # using currently encoder counts only
 
 elevator.encAPort = 4
 elevator.encBPort = 5
 elevator.encType = wpilib.Encoder.EncodingType.k4X
-elevator.encReverse = False
+elevator.encReverse = True
 #100 ticks per revolution, a 2 inch diameter pulley (1.0in radius)
 
 #---------------------------------------------------------------------------------------------

@@ -17,4 +17,4 @@ class HatchGrabTeleopDefault(Command):
             subsystems.hatchgrab.HatchOpen()
 
     def isFinished(self):
-        return True
+        return False

@@ -103,27 +103,27 @@ class TankDrive(Subsystem):
             
             if abs(l - r) > 0.1 and abs(l - r) <= 0.88 and forward:   # small tilt
                 if (r > l):       # small tilt towards right
-                    spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompSmall))
+                    spdRight = min(.5,spdRight*(1+robotmap.driveLine.spdCompSmall))
                     spdLeft = spdLeft*spdCorr1
                 else:
                     spdRight = spdRight*spdCorr1
-                    spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompSmall))
+                    spdLeft = min(.5,spdLeft*(1+robotmap.driveLine.spdCompSmall))
 
             elif abs(l - r) > 0.88 and abs(l - r) <= 1.4 and forward:  # medium tilt
                 if (r > l):       # medium tilt towards right
-                    spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompMedium))
+                    spdRight = min(.5,spdRight*(1+robotmap.driveLine.spdCompMedium))
                     spdLeft = spdLeft*spdCorr2
                 else:
                     spdRight = spdRight*spdCorr2
-                    spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompMedium))
+                    spdLeft = min(.5,spdLeft*(1+robotmap.driveLine.spdCompMedium))
 
             elif abs(l - r) > 1.4 and abs(l - r) <= 2.1 and forward:  # large tilt
                 if (r > l):       # large tilt towards right
-                    spdRight = min(1,spdRight*(1+robotmap.driveLine.spdCompLarge))
+                    spdRight = min(.5,spdRight*(1+robotmap.driveLine.spdCompLarge))
                     spdLeft = spdLeft*spdCorr3
                 else:
                     spdRight = spdRight*spdCorr3
-                    spdLeft = min(1,spdLeft*(1+robotmap.driveLine.spdCompLarge))
+                    spdLeft = min(.5,spdLeft*(1+robotmap.driveLine.spdCompLarge))
 
         self.leftSpdCtrl.set(spdLeft)
         self.rightSpdCtrl.set(spdRight)
