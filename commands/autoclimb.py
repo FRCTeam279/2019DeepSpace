@@ -32,10 +32,10 @@ class AutoClimb(CommandGroup):
             self.addSequential(WaitCommand(1.2))
 
             self.addSequential(RetractAll())    
-            self.addSequential(WaitCommand(3))
+            self.addSequential(WaitCommand(1.5))
 
-            self.addSequential(DriveRaw(-self.climbSpd,-self.climbSpd, 1))    
-            self.addSequential(WaitCommand(1.2))
+            self.addSequential(DriveRaw(-self.climbSpd,-self.climbSpd, 2))    
+            self.addSequential(WaitCommand(1))
 
             self.addSequential(PrintCommand("Finished Test"))
             
