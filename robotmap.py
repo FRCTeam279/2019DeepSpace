@@ -88,7 +88,7 @@ elevator.motorPort = 2              # in pwm 2, to the spark relay
 #elevator.btmLimitNormalClosed = False   # switch is normally cosed
 elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
-elevator.holdSpeed = 0.2
+elevator.holdSpeed = 0
 
 elevator.maxHeight = 48         # inches, calculate this
 elevator.lvlOneHeight = 24      # inches, calculate this

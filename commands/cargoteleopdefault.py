@@ -19,8 +19,6 @@ class CargoTeleopDefault(Command):
         else:
             subsystems.cargograb.closeCargoHold()
 
-        #speed = -(oi.goGamePad.getRawAxis(oi.config.axisCargoGrabIndex))
-
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
         return False
