@@ -176,7 +176,7 @@ def init():
 
     global btnCargoGrabTog
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
-    btnRampTog.whenPressed(CargoToggleTrigger())
+    btnCargoGrabTog.whenPressed(CargoToggleTrigger())
 
     global btnHatchGrabTog
     btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
