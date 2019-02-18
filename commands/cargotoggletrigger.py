@@ -3,16 +3,16 @@ import robotmap
 import subsystems
 import oi
 
-class HatchToggleTrigger(Command):
+class CargoToggleTrigger(Command):
 
     def __init__(self):
-            super().__init__('HatchToggleTrigger')
-            self.requires(subsystems.hatchgrab)
+            super().__init__('CargoToggleTrigger')
+            self.requires(subsystems.cargograb)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.hatchgrab.hatchTogFunction()
+        subsystems.cargograb.cargoTogFunction()
         
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands

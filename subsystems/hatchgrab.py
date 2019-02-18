@@ -25,11 +25,10 @@ class HatchGrab(Subsystem):
         self.hatchToggle = False
 
     def hatchTogFunction(self):
-        if oi.btnHatchGrabTog:
-            if self.hatchToggle == False:
-                self.hatchToggle = True
-            else:
-                self.hatchToggle = False
+        if self.hatchToggle == False:
+            self.hatchToggle = True
+        else:
+            self.hatchToggle = False
             
         return self.hatchToggle
 

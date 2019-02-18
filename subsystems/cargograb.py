@@ -35,11 +35,10 @@ class CargoGrab(Subsystem):
 
 #-----------------------------------------------------------------------------------------
     def cargoTogFunction(self):
-        if oi.btnCargoGrabTog:
-            if self.cargoToggle == False:
-                self.cargoToggle = True
-            else:
-                self.cargoToggle = False
+        if self.cargoToggle == False:
+            self.cargoToggle = True
+        else:
+            self.cargoToggle = False
             
         return self.cargoToggle
 

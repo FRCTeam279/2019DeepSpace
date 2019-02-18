@@ -16,7 +16,7 @@ from commands.elevatorresetencoders import ElevatorResetEncoders
 #from commands.alllifttoggletrigger import AllLiftTogTrigger
 #from commands.frontlifttoggletrigger import FrontLiftTogTrigger
 #from commands.backlifttoggletrigger import BackLiftTogTrigger
-#from commands.cargotoggletrigger import CargoToggleTrigger
+from commands.cargotoggletrigger import CargoToggleTrigger
 from commands.hatchtoggletrigger import HatchToggleTrigger
 from commands.ramptoggletrigger import RampToggleTrigger
 import robotmap
@@ -83,7 +83,6 @@ config.btnElevatorLvlOneIndex = 4       # 4 = Y
 #config.btnRampRetractTogIndex = 6       # 6 = RB
 #config.btnCargoGrabOpenTogIndex = 3     # 3 = X
 #config.btnCargoGrabCloseTogIndex = 2    # 2 = B
-#config.axisCargoGrabIndex = 5           # 5 = RY axis
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -119,7 +118,6 @@ btnRampRetractTog = None
 btnRampTog = None
 
 #Manipulators
-axisCargoGrab = None
 btnCargoGrabTog = None
 btnHatchGrabTog = None
 
@@ -178,7 +176,7 @@ def init():
 
     global btnCargoGrabTog
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
-    #btnRampTog.whenPressed(CargoToggleTrigger())
+    btnRampTog.whenPressed(CargoToggleTrigger())
 
     global btnHatchGrabTog
     btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
