@@ -43,8 +43,8 @@ class MyRobot(CommandBasedRobot):
 
     def autonomousPeriodic(self):
         super().autonomousPeriodic()
-        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
-        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
+        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR)
+        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR)
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
@@ -57,8 +57,8 @@ class MyRobot(CommandBasedRobot):
 
     def teleopPeriodic(self):
         Scheduler.getInstance().run()
-        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
-        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
+        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR)
+        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR)
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
@@ -71,8 +71,8 @@ class MyRobot(CommandBasedRobot):
 
     def disabledPeriodic(self):
         Scheduler.getInstance().run()
-        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.getVoltage())
-        SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.getVoltage())
+        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR)
+        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR)
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)

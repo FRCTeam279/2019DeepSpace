@@ -49,6 +49,18 @@ class TankLift(Subsystem):
         self.frontSolToggle = False
         self.backSolToggle = False
 
+
+        if self.backIR.getVoltage() > 2.5:
+            self.backIR = True
+        else:
+            self.backIR = False
+
+
+        if self.frontIR.getVoltage() > 2.5:
+            self.frontIR = True
+        else:
+            self.frontIR = False
+
     # ------------------------------------------------------------------------------------------------------------------
     
     #def initDefaultCommand(self):
@@ -73,9 +85,9 @@ class TankLift(Subsystem):
 
  
     def retractFront(self):      
-        if self.frontIR.getVoltage() == 1:
+        if self.frontIR == True:
             self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
     
     def retractBack(self):
-        if self.backIR.getVoltage() == 1:
+        if self.backIR == True:
             self.backCylinder.set(2)    # 1: extend, 2: retract, 0: off
