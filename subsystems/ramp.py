@@ -25,12 +25,11 @@ class Ramp(Subsystem):
                 raise
 
     def rampTogFunction(self):
-        if oi.btnRampTog:
-            if self.rampToggle == False:
-                self.rampToggle = True
-            else:
-                self.rampToggle = False
-            
+        if self.rampToggle == False:
+            self.rampToggle = True
+        else:
+            self.rampToggle = False
+                
         return self.rampToggle
 
     def extendRamp(self):

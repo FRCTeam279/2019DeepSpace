@@ -45,6 +45,10 @@ class TankLift(Subsystem):
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
 
+        self.allSolToggle = False
+        self.frontSolToggle = False
+        self.backSolToggle = False
+
     # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
