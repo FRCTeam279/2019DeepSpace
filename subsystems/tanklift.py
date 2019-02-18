@@ -51,9 +51,9 @@ class TankLift(Subsystem):
 
     # ------------------------------------------------------------------------------------------------------------------
     
-    def initDefaultCommand(self):
-        self.setDefaultCommand(TankLiftTeleopDefault())
-        print("{}Default command set to TankLiftTeleopDefault".format(self.logPrefix))
+    #def initDefaultCommand(self):
+    #    self.setDefaultCommand(TankLiftTeleopDefault())
+    #    print("{}Default command set to TankLiftTeleopDefault".format(self.logPrefix))
  
     def extendAll(self):
         self.frontCylinder.set(1)   # 1: extend, 2: retract, 0: off

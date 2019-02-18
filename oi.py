@@ -44,8 +44,8 @@ class ConfigHolder:
 config = ConfigHolder()
 
 # Driver Sticks
-config.leftDriverStickNullZone = 0.08
-config.rightDriverStickNullZone = 0.05
+config.leftDriverStickNullZone = 0.05
+config.rightDriverStickNullZone = 0.03
 
 config.throttleFilterPower = 0.4
 config.turnFilterPower = 0.4

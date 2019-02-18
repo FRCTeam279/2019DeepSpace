@@ -19,4 +19,4 @@ class RampTeleopDefault(Command):
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
-        return True
+        return False

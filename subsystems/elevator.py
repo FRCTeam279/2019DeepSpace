@@ -61,7 +61,7 @@ class Elevator(Subsystem):
         if btmLimit == True:
             self.elevatorEncoder.reset()
 
-        dist = self.elevatorHeight
+        dist = self.elevatorHeight   # encoder counts for now
         topLimit = dist >= robotmap.elevator.maxHeight
 
         if (btmLimit and speed <= 0.0):
