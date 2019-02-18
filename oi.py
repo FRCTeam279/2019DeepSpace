@@ -16,8 +16,8 @@ from commands.elevatorresetencoders import ElevatorResetEncoders
 #from commands.alllifttoggletrigger import AllLiftTogTrigger
 #from commands.frontlifttoggletrigger import FrontLiftTogTrigger
 #from commands.backlifttoggletrigger import BackLiftTogTrigger
-#from commands.cargotoggletrigger import cargoToggleTrigger
-#from commands.hatchtoggletrigger import hatchToggleTrigger
+#from commands.cargotoggletrigger import CargoToggleTrigger
+from commands.hatchtoggletrigger import HatchToggleTrigger
 from commands.ramptoggletrigger import RampToggleTrigger
 import robotmap
 
@@ -182,7 +182,7 @@ def init():
 
     global btnHatchGrabTog
     btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
-    #btnRampTog.whenPressed(HatchToggleTrigger())
+    btnHatchGrabTog.whenPressed(HatchToggleTrigger())
 
 # ----------------------------------------------------------
 # Elevator system
