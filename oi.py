@@ -12,6 +12,12 @@ from commands.rampretract import RampRetract
 from commands.autoclimb import AutoClimb
 from commands.elevatormovelvlone import ElevatorMoveLvlOne
 from commands.elevatorresetencoders import ElevatorResetEncoders
+
+#from commands.alllifttoggletrigger import AllLiftTogTrigger
+#from commands.frontlifttoggletrigger import FrontLiftTogTrigger
+#from commands.backlifttoggletrigger import BackLiftTogTrigger
+#from commands.cargotoggletrigger import cargoToggleTrigger
+#from commands.hatchtoggletrigger import hatchToggleTrigger
 from commands.ramptoggletrigger import RampToggleTrigger
 import robotmap
 
@@ -172,9 +178,11 @@ def init():
 
     global btnCargoGrabTog
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
+    #btnRampTog.whenPressed(CargoToggleTrigger())
 
     global btnHatchGrabTog
     btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
+    #btnRampTog.whenPressed(HatchToggleTrigger())
 
 # ----------------------------------------------------------
 # Elevator system
@@ -198,7 +206,7 @@ def init():
 
     global btnRampTog
     btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
-    #btnRampTog.whenPressed(RampToggleTrigger())
+    btnRampTog.whenPressed(RampToggleTrigger())
     
 # ----------------------------------------------------------
 # Lift system
@@ -211,7 +219,7 @@ def init():
 
     #global btnTogAllLift
     #btnTogAllLift = JoystickButton(rightDriverStick, config.btnTogAllLiftIndex)
-    #btnTogAllLift.whenPressed(AllSolLiftSystem())
+    #btnTogAllLift.whenPressed(AllLiftTogTrigger())
 
     global btnExtendAll
     btnExtendAll = JoystickButton(rightDriverStick, config.btnExtendAllIndex)
@@ -224,7 +232,7 @@ def init():
 
     #global btnTogFrontLift
     #btnTogFrontLift = JoystickButton(rightDriverStick, config.btnTogFrontLiftIndex)
-    #btnTogFrontLift.whenPressed(FrontSolLiftSystem())
+    #btnTogFrontLift.whenPressed(FrontLiftTogTrigger())
 
     global btnExtendFront
     btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
@@ -237,7 +245,7 @@ def init():
 
     #global btnTogBackLift
     #btnTogBackLift = JoystickButton(rightDriverStick, config.btnTogBackLiftIndex)
-    #btnTogBackLift.whenPressed(BackSolLiftSystem())
+    #btnTogBackLift.whenPressed(BackLiftTogTrigger())
 
     global btnExtendBack
     btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)

@@ -24,14 +24,13 @@ class Ramp(Subsystem):
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
 
-        #def rampTogFunction(self):
-        if oi.btnRampTog:
-            if self.rampToggle == False:
-                self.rampToggle = True
-            else:
-                self.rampToggle = False
+    def rampTogFunction(self):
+        if self.rampToggle == False:
+            self.rampToggle = True
+        else:
+            self.rampToggle = False
                 
-        #return self.rampToggle
+        return self.rampToggle
 
     def extendRamp(self):
         self.rampSolenoid.set(1)   # 1: extend, 2: retract, 0: off
