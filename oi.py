@@ -10,7 +10,7 @@ from commands.retractback import RetractBack
 from commands.rampextend import RampExtend
 from commands.rampretract import RampRetract
 from commands.autoclimb import AutoClimb
-from commands.elevatormovelvlone import ElevatorMoveLvlOne
+from commands.elevatormovehatchheight import ElevatorMoveHatchHeight
 from commands.elevatorresetencoders import ElevatorResetEncoders
 
 #from commands.alllifttoggletrigger import AllLiftTogTrigger
@@ -77,12 +77,7 @@ config.btnCargoGrabTogIndex = 3          # 3 = X
 config.btnRampTogIndex = 2               # 2 = B
 
 config.axisElevatorIndex = 1            # 1 = LY axis
-config.btnElevatorLvlOneIndex = 4       # 4 = Y
-
-#config.btnRampExtendTogIndex = 5        # 5 = LB
-#config.btnRampRetractTogIndex = 6       # 6 = RB
-#config.btnCargoGrabOpenTogIndex = 3     # 3 = X
-#config.btnCargoGrabCloseTogIndex = 2    # 2 = B
+config.btnElevatorHatchHeightIndex = 6       # 6 = RB
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -92,7 +87,7 @@ leftDriverStick = None
 rightDriverStick = None
 goGamePad = None
 
-btnElevatorLvlOne = None
+btnElevatorHatchHeight = None
 btnAutoClimb = None
 btnDriveSlow = None
 btnEnableLightSensor = None
@@ -186,9 +181,9 @@ def init():
 # Elevator system
 # ----------------------------------------------------------
 
-    global btnElevatorLvlOne
-    btnElevatorLvlOne = JoystickButton(goGamePad, config.btnElevatorLvlOneIndex)
-    btnElevatorLvlOne.whenPressed(ElevatorMoveLvlOne())
+    global btnElevatorHatchHeight
+    btnElevatorHatchHeight = JoystickButton(goGamePad, config.btnElevatorHatchHeightIndex)
+    btnElevatorHatchHeight.whenPressed(ElevatorMoveHatchHeight())
 
 # ----------------------------------------------------------
 # Ramp system
