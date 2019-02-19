@@ -95,6 +95,7 @@ elevator.lvlOneHeight = 24      # inches, calculate this
 elevator.margin = 0.3           # A tolerance when going to the level 1 height
 elevator.elevatorDeadZone = .05
 elevator.inchesPerTick = 1    # using currently encoder counts only
+elevator.cargoHeight = 25
 
 elevator.encAPort = 4
 elevator.encBPort = 5

@@ -75,14 +75,11 @@ config.btnExtendBackIndex = 4
 config.btnHatchGrabTogIndex = 1         # 1 = A
 config.btnCargoGrabTogIndex = 3          # 3 = X
 config.btnRampTogIndex = 2               # 2 = B
+config.btnElevatorCargoHeight = 5        # 5 = LB
 
 config.axisElevatorIndex = 1            # 1 = LY axis
 config.btnElevatorLvlOneIndex = 4       # 4 = Y
 
-#config.btnRampExtendTogIndex = 5        # 5 = LB
-#config.btnRampRetractTogIndex = 6       # 6 = RB
-#config.btnCargoGrabOpenTogIndex = 3     # 3 = X
-#config.btnCargoGrabCloseTogIndex = 2    # 2 = B
 
 # ----------------------------------------------------------
 # Stick and Button Objects
