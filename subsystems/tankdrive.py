@@ -91,10 +91,9 @@ class TankDrive(Subsystem):
         forward = left > 0 and right > 0 
         spdLeft = left
         spdRight = right
-
-        if oi.btnEnableLightSensor.get():
-            r = self.rSensor.getVoltage()
-            l = self.lSensor.getVoltage()
+        r = self.rSensor.getVoltage()
+        l = self.lSensor.getVoltage()
+        if oi.btnEnableLightSensor.get(): 
             spdReduce = 0.5
             spdCorr1 = 0.9
             spdCorr2 = .8
@@ -126,7 +125,6 @@ class TankDrive(Subsystem):
                 else:
                     spdRight = spdRight*spdCorr3
                     spdLeft = min(.5,spdLeft*(1+robotmap.driveLine.spdCompLarge))
-
         self.leftSpdCtrl.set(spdLeft)
         self.rightSpdCtrl.set(spdRight)
     

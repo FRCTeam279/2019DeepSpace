@@ -92,7 +92,7 @@ elevator.holdSpeed = 0
 
 elevator.maxHeight = 230        # encoder counts
 elevator.hatchHeight = 22       # inches
-elevator.margin = 0.3           # elevator automatic movement tolerance
+elevator.margin = 0.5           # elevator automatic movement tolerance
 elevator.elevatorDeadZone = .05
 elevator.inchesPerTick = .117   # or 8.56 TICKS per inch
 
