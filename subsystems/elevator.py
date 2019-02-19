@@ -48,7 +48,7 @@ class Elevator(Subsystem):
             self.elevatorSpdCtrl.set(0.0)
             #self.elevatorEncoder.reset()
         else:
-            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed) #Add holdSpeed to robotmap
+            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
 
 # -----------------------------------------------------------------------------
 
@@ -74,14 +74,13 @@ class Elevator(Subsystem):
             else:
                 self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*speed))
 
-
-    def elevatorMoveLvlOne(self):
+    def elevatorMoveHatchHeight(self):
         if self.btmLimitSwitch.get() == True:
             self.elevatorEncoder.reset()
 
-        if self.elevatorHeight > robotmap.elevator.lvlOneHeight + robotmap.elevator.margin:
+        if self.elevatorHeight > robotmap.elevator.hatchHeight + robotmap.elevator.margin:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*-0.75))
-        elif self.elevatorHeight < robotmap.elevator.lvlOneHeight - robotmap.elevator.margin:
+        elif self.elevatorHeight < robotmap.elevator.hatchHeight - robotmap.elevator.margin:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdDown*0.75))
         else:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
