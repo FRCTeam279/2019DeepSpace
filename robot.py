@@ -43,45 +43,78 @@ class MyRobot(CommandBasedRobot):
 
     def autonomousPeriodic(self):
         super().autonomousPeriodic()
-        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR)
-        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR)
-        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+
+        #Tanklift data
+        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR.state)
+        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR.state)
+
+        #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+
+        #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("Servo Angle", subsystems.cargograb.leftservo.getAngle())
-        SmartDashboard.putNumber("left speed", subsystems.driveline.leftSpdCtrl.get())
-        SmartDashboard.putNumber("right speed", subsystems.driveline.rightSpdCtrl.get())
-        # optionally do stuff like display data to smart dashboard here while in autonomous
+
+        #Driveline data
+        SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
+        SmartDashboard.putNumber("Right Speed", subsystems.driveline.rightSpdCtrl.get())
+        SmartDashboard.putNumber("Speed Dif", subsystems.driveline.spdDif)
+
+        SmartDashboard.putNumber("Right Sensors", subsystems.driveline.rSensor.getVoltage())
+        SmartDashboard.putNumber("Left Sensors", subsystems.driveline.lSensor.getVoltage())
+        SmartDashboard.putNumber("Sensor Dif", subsystems.driveline.lineSensorCompare)
 
     def teleopPeriodic(self):
         Scheduler.getInstance().run()
-        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR)
-        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR)
-        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+
+        #Tanklift data
+        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR.state)
+        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR.state)
+
+        #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+
+        #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("Servo Angle", subsystems.cargograb.leftservo.getAngle())
-        SmartDashboard.putNumber("left speed", subsystems.driveline.leftSpdCtrl.get())
-        SmartDashboard.putNumber("right speed", subsystems.driveline.rightSpdCtrl.get())
-        #optionally do stuff like display data to smart dashboard here while in teleop
+
+        #Driveline data
+        SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
+        SmartDashboard.putNumber("Right Speed", subsystems.driveline.rightSpdCtrl.get())
+        SmartDashboard.putNumber("Speed Dif", subsystems.driveline.spdDif)
+
+        SmartDashboard.putNumber("Right Sensors", subsystems.driveline.rSensor.getVoltage())
+        SmartDashboard.putNumber("Left Sensors", subsystems.driveline.lSensor.getVoltage())
+        SmartDashboard.putNumber("Sensor Dif", subsystems.driveline.lineSensorCompare)
 
     def disabledPeriodic(self):
         Scheduler.getInstance().run()
-        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR)
-        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR)
-        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorHeight)
+
+        #Tanklift data
+        SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR.state)
+        SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR.state)
+
+        #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+
+        #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("Servo Angle", subsystems.cargograb.leftservo.getAngle())
-        SmartDashboard.putNumber("left speed", subsystems.driveline.leftSpdCtrl.get())
-        SmartDashboard.putNumber("right speed", subsystems.driveline.rightSpdCtrl.get())
-        # optionally do stuff like display data to smart dashboard here while in disabled
+
+        #Driveline data
+        SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
+        SmartDashboard.putNumber("Right Speed", subsystems.driveline.rightSpdCtrl.get())
+        SmartDashboard.putNumber("Speed Dif", subsystems.driveline.spdDif)
+
+        SmartDashboard.putNumber("Right Sensors", subsystems.driveline.rSensor.getVoltage())
+        SmartDashboard.putNumber("Left Sensors", subsystems.driveline.lSensor.getVoltage())
+        SmartDashboard.putNumber("Sensor Dif", subsystems.driveline.lineSensorCompare)
 
     def testPeriodic(self):
         wpilib.LiveWindow.run()

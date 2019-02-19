@@ -29,7 +29,8 @@ class TankLiftTeleopDefault(Command):
         #else:
         #    subsystems.drivelift.retractBack()
         
-        subsystems.drivelift.retractAll()
+        subsystems.drivelift.backIRToBool()
+        subsystems.drivelift.frontIRToBool()
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands

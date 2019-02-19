@@ -49,23 +49,28 @@ class TankLift(Subsystem):
         self.frontSolToggle = False
         self.backSolToggle = False
 
+        self.backIR.state = True
+        self.frontIR.state = True
 
-        if self.backIR.getVoltage() > 2.5:
-            self.backIR = True
+    def backIRToBool(self):
+        if self.backIR.getVoltage() > 1.5:
+            self.backIR.state = True
         else:
-            self.backIR = False
+            self.backIR.state = False
+        return self.backIR.state
 
-
-        if self.frontIR.getVoltage() > 2.5:
-            self.frontIR = True
+    def frontIRToBool(self):
+        if self.frontIR.getVoltage() > 1.5:
+            self.frontIR.state = True
         else:
-            self.frontIR = False
+            self.frontIR.state = False
+        return self.frontIR.state
 
     # ------------------------------------------------------------------------------------------------------------------
     
-    #def initDefaultCommand(self):
-    #    self.setDefaultCommand(TankLiftTeleopDefault())
-    #    print("{}Default command set to TankLiftTeleopDefault".format(self.logPrefix))
+    def initDefaultCommand(self):
+        self.setDefaultCommand(TankLiftTeleopDefault())
+        print("{}Default command set to TankLiftTeleopDefault".format(self.logPrefix))
  
     def extendAll(self):
         self.frontCylinder.set(1)   # 1: extend, 2: retract, 0: off
