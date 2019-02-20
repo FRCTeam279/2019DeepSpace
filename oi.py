@@ -12,6 +12,7 @@ from commands.rampretract import RampRetract
 from commands.autoclimb import AutoClimb
 from commands.elevatormovehatchheight import ElevatorMoveHatchHeight
 from commands.elevatorresetencoders import ElevatorResetEncoders
+from commands.elevatorcargoheight import ElevatorCargoHeight
 
 #from commands.alllifttoggletrigger import AllLiftTogTrigger
 #from commands.frontlifttoggletrigger import FrontLiftTogTrigger
@@ -89,6 +90,7 @@ rightDriverStick = None
 goGamePad = None
 
 btnElevatorHatchHeight = None
+btnElevatorCargoHeight = None
 btnAutoClimb = None
 btnDriveSlow = None
 btnEnableLightSensor = None
@@ -185,6 +187,10 @@ def init():
     global btnElevatorHatchHeight
     btnElevatorHatchHeight = JoystickButton(goGamePad, config.btnElevatorHatchHeightIndex)
     btnElevatorHatchHeight.whenPressed(ElevatorMoveHatchHeight())
+
+    global btnElevatorCargoHeight
+    btnElevatorCargoHeight = JoystickButton(goGamePad, config.btnElevatorCargoHeight)
+    btnElevatorCargoHeight.whenPressed(ElevatorCargoHeight())
 
 # ----------------------------------------------------------
 # Ramp system

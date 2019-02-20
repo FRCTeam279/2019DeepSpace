@@ -31,7 +31,7 @@ class Elevator(Subsystem):
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
                 
-        self.elevatorHeight = self.elevatorEncoder.getDistance
+        self.elevatorHeight = self.elevatorEncoder.getDistance()
         self.btmLimitSwitch = wpilib.DigitalInput(robotmap.elevator.btmLimitSwitchPort)
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ class Elevator(Subsystem):
         else:
             self.elevatorSpdCtrl.set(0.0)
 #-----------------------------------------------------------------------------------
-def elevatorCargoHeight(self):
+    def elevatorCargoHeight(self):
         if self.btmLimitSwitch.get() == True:
             self.elevatorEncoder.reset()
 
