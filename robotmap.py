@@ -17,13 +17,15 @@ devMode = False
 # Driveline Subsystem Config
 # ----------------------------------------------------------
 driveLine = ConfigHolder()
+
 driveLine.leftMotorPort = 0
 driveLine.rightMotorPort = 1
 driveLine.speedControllerType = "TALON" # or "VICTORSP"
 driveLine.controlStyle = "nfs"          # or "skid"
 
 driveLine.frontIRPort = 0       # IN ANALOG I/O        
-driveLine.backIRPort = 1        # IN ANALOG I/O        
+driveLine.backIRPort = 1        # IN ANALOG I/O   
+     
 driveLine.spdCompSmall = .4
 driveLine.spdCompMedium = .6
 driveLine.spdCompLarge = .8

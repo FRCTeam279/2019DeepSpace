@@ -30,8 +30,8 @@ class Elevator(Subsystem):
             print("{}Exception caught instantiating elevator encoder. {}".format(self.logPrefix, e))
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
-                
-        self.elevatorHeight = self.elevatorEncoder.getDistance
+
+        self.elevatorHeight = self.elevatorEncoder.getDistance()
         self.btmLimitSwitch = wpilib.DigitalInput(robotmap.elevator.btmLimitSwitchPort)
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -94,10 +94,8 @@ class Elevator(Subsystem):
     def elevatorMoveDown(self, speed):
         if self.btmLimitSwitch.get() == True:
             self.elevatorEncoder.reset()
-            
         if not self.btmLimitSwitch:
             self.elevatorSpdCtrl.set(speed)
-
         else:
             self.elevatorSpdCtrl.set(0.0)
 
