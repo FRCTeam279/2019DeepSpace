@@ -16,23 +16,26 @@ class CargoGrab(Subsystem):
         self.logPrefix = "CargoGrab: "
     
         try:
-            self.leftservo = wpilib.Servo(robotmap.cargograb.leftServoPort)
+            self.rightServo = wpilib.Servo(robotmap.cargograb.rightServoPort)
+        except Exception as e:
+            print("{}Exception caught instantiating right servo. {}".format(self.logPrefix, e))
+            if not wpilib.DriverStation.getInstance().isFmsAttached():
+                raise
+
+        try:
+            self.leftServo = wpilib.Servo(robotmap.cargograb.leftServoPort)
         except Exception as e:
             print("{}Exception caught instantiating left servo. {}".format(self.logPrefix, e))
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
 
-        try:
-            self.rightservo = wpilib.Servo(robotmap.cargograb.rightServoPort)
-        except Exception as e:
-            print("{}Exception caught instantiating right servo. {}".format(self.logPrefix, e))
-            if not wpilib.DriverStation.getInstance().isFmsAttached():
-                raise
-        
         self.cargoToggle = False
-        self.openAngle = robotmap.cargograb.openAngle
-        self.closeAngle = robotmap.cargograb.closeAngle
+        self.openAngleRight = robotmap.cargograb.openAngleRight
+        self.closeAngleRight = robotmap.cargograb.closeAngleRight
 
+        self.openAngleLeft = robotmap.cargograb.openAngleLeft
+        self.closeAngleLeft = robotmap.cargograb.closeAngleLeft
+        
 #-----------------------------------------------------------------------------------------
     def cargoTogFunction(self):
         if self.cargoToggle == False:
@@ -47,11 +50,18 @@ class CargoGrab(Subsystem):
         print("{}Default command set to CargoGrab".format(self.logPrefix)) 
 
     def openCargoHold(self):
-        self.leftservo.setAngle(self.openAngle)
-        self.rightservo.setAngle(self.openAngle)
-
+        self.rightServo.setAngle(self.openAngleRight + self.angleInitRight)
+        self.leftServo.setAngle(self.openAngleLeft + self.angleInitLeft)
+       
     def closeCargoHold(self):
-        self.leftservo.setAngle(self.closeAngle)
-        self.rightservo.setAngle(self.closeAngle)
-            
+        self.rightServo.setAngle(self.closeAngleRight + self.angleInitRight)
+        self.leftServo.setAngle(self.closeAngleLeft + self.angleInitLeft)
+      
+    def zeroAngleRight(self):
+        self.angleInitRight = self.rightServo.getAngle()
+        return self.angleInitRight
 
+    def zeroAngleLeft(self):
+        self.angleInitLeft = self.leftServo.getAngle()
+        return self.angleInitLeft
+        

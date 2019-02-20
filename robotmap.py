@@ -25,7 +25,7 @@ driveLine.controlStyle = "nfs"          # or "skid"
 
 driveLine.frontIRPort = 0       # IN ANALOG I/O        
 driveLine.backIRPort = 1        # IN ANALOG I/O   
-     
+
 driveLine.spdCompSmall = .4
 driveLine.spdCompMedium = .6
 driveLine.spdCompLarge = .8
@@ -94,6 +94,7 @@ elevator.holdSpeed = 0
 
 elevator.maxHeight = 230        # encoder counts
 elevator.hatchHeight = 22       # inches
+elevator.cargoHeight = 25       #inches
 elevator.margin = 0.5           # elevator automatic movement tolerance
 elevator.elevatorDeadZone = .05
 elevator.inchesPerTick = .117   # or 8.56 TICKS per inch
@@ -121,10 +122,12 @@ sensors.hasAHRS = True
 # Cargo Grab Config
 #------------------------------------------------------------
 cargograb = ConfigHolder()
-cargograb.rightServoPort = 5
-cargograb.leftServoPort = 6
-cargograb.openAngle = 90        # RECONFIGURE
-cargograb.closeAngle = 0        # RECONFIGURE
+cargograb.leftServoPort = 3
+cargograb.rightServoPort = 4
+cargograb.openAngleRight = 130
+cargograb.closeAngleRight = 40
+cargograb.openAngleLeft = 60
+cargograb.closeAngleLeft = 150
 
 #-----------------------------------------------------------
 # Hatch Grab Config
