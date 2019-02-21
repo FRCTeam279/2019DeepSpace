@@ -93,7 +93,7 @@ class TankDrive(Subsystem):
         if oi.btnEnableLightSensor.get():
             r = self.rSensor.getVoltage()
             l = self.lSensor.getVoltage()
-            spdReduce = 0.5
+            spdReduce = 1.0
             spdCorr1 = 0.8
             spdCorr2 = .75
             spdCorr3 = .6

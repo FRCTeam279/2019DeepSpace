@@ -90,7 +90,8 @@ elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
 elevator.holdSpeed = 0
 
-elevator.maxHeight = 230        # encoder counts
+elevator.maxHeightInch = 40
+
 elevator.lvlOneHeight = 24      # inches, calculate this
 elevator.margin = 0.3           # A tolerance when going to the level 1 height
 elevator.elevatorDeadZone = .05
