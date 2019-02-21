@@ -53,9 +53,5 @@ class CargoGrab(Subsystem):
     def closeCargoHold(self):
         self.leftservo.setAngle(self.closeAngle)
         self.rightservo.setAngle(self.closeAngle)
-
-    #def cargoGrabStop(self)
-    #    self.leftservo.
-    #    self.rightservo.
             
 

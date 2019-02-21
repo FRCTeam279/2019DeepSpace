@@ -3,15 +3,15 @@ import robotmap
 import subsystems
 import oi
 
-class ElevatorMoveLvlOne(Command):
+class ElevatorCargoHeight(Command):
     def __init__(self):
-            super().__init__('ElevatorMoveLvlOne')
+            super().__init__('ElevatorCargoHeight')
             self.requires(subsystems.elevator)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.elevator.elevatorMoveLvlOne()
+        subsystems.elevator.elevatorCargoHeight()
 
     def isFinished(self):
         return True

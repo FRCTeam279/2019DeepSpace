@@ -74,6 +74,8 @@ class TankDrive(Subsystem):
             if not wpilib.DriverStation.getInstance().isFmsAttached():
                 raise
 
+        self.lineSensorCompare = abs(self.lSensor.getVoltage() - self.rSensor.getVoltage())
+        self.spdDif = abs(self.leftSpdCtrl.getSpeed() - self.rightSpdCtrl.getSpeed())
     # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
@@ -89,14 +91,13 @@ class TankDrive(Subsystem):
         forward = left > 0 and right > 0 
         spdLeft = left
         spdRight = right
-
-        if oi.btnEnableLightSensor.get():
-            r = self.rSensor.getVoltage()
-            l = self.lSensor.getVoltage()
-            spdReduce = 1.0
-            spdCorr1 = 0.8
-            spdCorr2 = .75
-            spdCorr3 = .6
+        r = self.rSensor.getVoltage()
+        l = self.lSensor.getVoltage()
+        if oi.btnEnableLightSensor.get(): 
+            spdReduce = 0.5
+            spdCorr1 = 0.9
+            spdCorr2 = .8
+            spdCorr3 = .5
             if forward:
                 spdLeft = spdReduce*spdLeft
                 spdRight = spdReduce*spdRight
@@ -124,7 +125,6 @@ class TankDrive(Subsystem):
                 else:
                     spdRight = spdRight*spdCorr3
                     spdLeft = min(.5,spdLeft*(1+robotmap.driveLine.spdCompLarge))
-
         self.leftSpdCtrl.set(spdLeft)
         self.rightSpdCtrl.set(spdRight)
     

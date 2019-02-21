@@ -92,7 +92,7 @@ elevator.holdSpeed = 0
 
 elevator.maxHeightInch = 40
 
-elevator.lvlOneHeight = 24      # inches, calculate this
+elevator.lvlOneHeight = 
 elevator.margin = 0.3           # A tolerance when going to the level 1 height
 elevator.elevatorDeadZone = .05
 elevator.inchesPerTick = 1    # using currently encoder counts only
