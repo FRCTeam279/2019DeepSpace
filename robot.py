@@ -50,6 +50,7 @@ class MyRobot(CommandBasedRobot):
 
         #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
@@ -76,6 +77,7 @@ class MyRobot(CommandBasedRobot):
 
         #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
@@ -102,6 +104,7 @@ class MyRobot(CommandBasedRobot):
 
         #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
