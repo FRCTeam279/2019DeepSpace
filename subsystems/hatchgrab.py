@@ -23,6 +23,15 @@ class HatchGrab(Subsystem):
                 raise       
 
         self.hatchToggle = False
+        self.hatchExtendToggle = False
+
+    def hatchExtendTogFunction(self):
+        if self.hatchExtendToggle == False:
+            self.hatchExtendToggle = True
+        else:
+            self.hatchExtendToggle = False
+            
+        return self.hatchExtendToggle
 
     def hatchTogFunction(self):
         if self.hatchToggle == False:

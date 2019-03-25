@@ -86,16 +86,16 @@ elevator = ConfigHolder()
 elevator.btmLimitSwitchPort = 6     # DIO port
 elevator.motorPort = 2              # in pwm 2, to the spark relay
 #elevator.btmLimitNormalClosed = False   # switch is normally cosed
-elevator.scaleSpdUp = 1.0
-elevator.scaleSpdDown = 1.0
+elevator.scaleSpdUp = 0.8
+elevator.scaleSpdDown = 0.8
 elevator.holdSpeed = 0
 
 elevator.maxHeightInch = 40
 
-elevator.lvlOneHeight = 
+elevator.lvlOneHeight = 24
 elevator.margin = 0.3           # A tolerance when going to the level 1 height
 elevator.elevatorDeadZone = .05
-elevator.inchesPerTick = 1    # using currently encoder counts only
+elevator.inchesPerTick = 0.117    # using currently encoder counts only
 
 elevator.encAPort = 4
 elevator.encBPort = 5
@@ -131,5 +131,8 @@ cargograb.closeAngle = 0        # RECONFIGURE
 hatchgrab = ConfigHolder()
 hatchgrab.solenoidExtendPort = 6
 hatchgrab.solenoidRetractPort = 7
+
+hatchgrab.extendSuctionsPort = 8
+hatchgrab.retractSuctionsPort = 9
 
 print("RobotMap module completed load")
