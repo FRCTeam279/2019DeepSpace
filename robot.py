@@ -43,20 +43,22 @@ class MyRobot(CommandBasedRobot):
 
     def autonomousPeriodic(self):
         super().autonomousPeriodic()
-
+        
         #Tanklift data
         SmartDashboard.putBoolean("Front IR", subsystems.drivelift.frontIR.state)
         SmartDashboard.putBoolean("Back IR", subsystems.drivelift.backIR.state)
 
         #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)      
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
-        SmartDashboard.putNumber("Servo Angle", subsystems.cargograb.leftservo.getAngle())
+        SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
+        SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
 
         #Driveline data
         SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
@@ -76,13 +78,15 @@ class MyRobot(CommandBasedRobot):
 
         #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
-        SmartDashboard.putNumber("Servo Angle", subsystems.cargograb.leftservo.getAngle())
+        SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
+        SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
 
         #Driveline data
         SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
@@ -102,13 +106,15 @@ class MyRobot(CommandBasedRobot):
 
         #Elevator Data
         SmartDashboard.putNumber("Elevator Ticks", subsystems.elevator.elevatorEncoder.get())
+        SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
         SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
-        SmartDashboard.putNumber("Servo Angle", subsystems.cargograb.leftservo.getAngle())
+        SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
+        SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
 
         #Driveline data
         SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())

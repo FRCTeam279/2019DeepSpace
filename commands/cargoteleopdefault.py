@@ -12,6 +12,8 @@ class CargoTeleopDefault(Command):
             self.requires(subsystems.cargograb)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
+            self.anglelInitRight = subsystems.cargograb.zeroAngleRight()
+            self.anglelInitLeft = subsystems.cargograb.zeroAngleLeft()
 
     def execute(self):
         if subsystems.cargograb.cargoToggle == True:
@@ -22,6 +24,3 @@ class CargoTeleopDefault(Command):
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
         return False
-
-    #def interrupted(self):
-    #    subsystems.cargograb.stop()

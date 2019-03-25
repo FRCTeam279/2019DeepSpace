@@ -44,6 +44,6 @@ def init():
     drivelift = TankLift()
     elevator = Elevator()
     ramp = Ramp()
-    cargograb = CargoGrab() # This gives errors
+    cargograb = CargoGrab()
     hatchgrab = HatchGrab()
 

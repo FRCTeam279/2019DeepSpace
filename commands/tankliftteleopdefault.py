@@ -17,14 +17,12 @@ class TankLiftTeleopDefault(Command):
         #else:
         #    subsystems.drivelift.retractAll()
 
-        #^We never want to extend all, so this needs to cahnge^
-
         #if subsystems.drivelift.frontLiftToggle == True:
         #    subsystems.drivelift.extendFront()
         #else:
         #    subsystems.drivelift.retractFront()
 
-        #if subsystems.drivelift.cackLiftToggle == True:
+        #if subsystems.drivelift.backLiftToggle == True:
         #    subsystems.drivelift.extendBack()
         #else:
         #    subsystems.drivelift.retractBack()

@@ -12,18 +12,19 @@ class ConfigHolder:
 devMode = False
 
 
-
 # ----------------------------------------------------------
 # Driveline Subsystem Config
 # ----------------------------------------------------------
 driveLine = ConfigHolder()
+
 driveLine.leftMotorPort = 0
 driveLine.rightMotorPort = 1
 driveLine.speedControllerType = "TALON" # or "VICTORSP"
 driveLine.controlStyle = "nfs"          # or "skid"
 
 driveLine.frontIRPort = 0       # IN ANALOG I/O        
-driveLine.backIRPort = 1        # IN ANALOG I/O        
+driveLine.backIRPort = 1        # IN ANALOG I/O   
+
 driveLine.spdCompSmall = .4
 driveLine.spdCompMedium = .6
 driveLine.spdCompLarge = .8
@@ -120,10 +121,12 @@ sensors.hasAHRS = True
 # Cargo Grab Config
 #------------------------------------------------------------
 cargograb = ConfigHolder()
-cargograb.rightServoPort = 5    # RECONFIGURE
-cargograb.leftServoPort = 6     # RECONFIGURE
-cargograb.openAngle = 90        # RECONFIGURE
-cargograb.closeAngle = 0        # RECONFIGURE
+cargograb.leftServoPort = 3
+cargograb.rightServoPort = 4
+cargograb.openAngleRight = 130
+cargograb.closeAngleRight = 40
+cargograb.openAngleLeft = 60
+cargograb.closeAngleLeft = 150
 
 #-----------------------------------------------------------
 # Hatch Grab Config

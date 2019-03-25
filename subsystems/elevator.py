@@ -94,10 +94,8 @@ class Elevator(Subsystem):
     def elevatorMoveDown(self, speed):
         if self.btmLimitSwitch.get() == True:
             self.elevatorEncoder.reset()
-            
         if not self.btmLimitSwitch:
             self.elevatorSpdCtrl.set(speed)
-
         else:
             self.elevatorSpdCtrl.set(0.0)
 #-----------------------------------------------------------------------------------
