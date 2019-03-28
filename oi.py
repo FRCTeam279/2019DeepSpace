@@ -20,8 +20,8 @@ from commands.elevatorcargoheight import ElevatorCargoHeight
 from commands.cargotoggletrigger import CargoToggleTrigger
 from commands.hatchtoggletrigger import HatchToggleTrigger
 from commands.ramptoggletrigger import RampToggleTrigger
+from commands.extendsuctionstrigger import ExtendSuctionsTrigger
 import robotmap
-
 
 class T16000M(Joystick):
     def __init__(self, port):
@@ -74,12 +74,13 @@ config.btnExtendBackIndex = 4
 
 # GO Gamepad (Logitech)
 config.btnHatchGrabTogIndex = 1         # 1 = A
-config.btnCargoGrabTogIndex = 3          # 3 = X
-config.btnRampTogIndex = 2               # 2 = B
-config.btnElevatorCargoHeight = 5        # 5 = LB
+config.btnCargoGrabTogIndex = 3         # 3 = X
+config.btnRampTogIndex = 2              # 2 = B
+config.btnElevatorCargoHeight = 5       # 5 = LB
+config.btnExtendSuctionsTogIndex =  6        # 6 = RB
 
 config.axisElevatorIndex = 1            # 1 = LY axis
-config.btnElevatorHatchHeightIndex = 6       # 6 = RB
+config.btnElevatorHatchHeightIndex = 7       # 6 = RB
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -91,6 +92,7 @@ goGamePad = None
 
 btnElevatorHatchHeight = None
 btnElevatorCargoHeight = None
+btnExtendSuctionsTog = None
 btnAutoClimb = None
 btnDriveSlow = None
 btnEnableLightSensor = None
@@ -179,6 +181,10 @@ def init():
     global btnHatchGrabTog
     btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
     btnHatchGrabTog.whenPressed(HatchToggleTrigger())
+
+    global btnExtendSuctionsTog
+    btnExtendSuctionsTog = JoystickButton(goGamePad, config.btnExtendSuctionsTogIndex)
+    btnExtendSuctionsTog.whenPressed(ExtendSuctionsTrigger())
 
 # ----------------------------------------------------------
 # Elevator system

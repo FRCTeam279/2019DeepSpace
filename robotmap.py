@@ -12,7 +12,6 @@ class ConfigHolder:
 devMode = False
 
 
-
 # ----------------------------------------------------------
 # Driveline Subsystem Config
 # ----------------------------------------------------------
@@ -92,12 +91,12 @@ elevator.scaleSpdUp = 0.8
 elevator.scaleSpdDown = 0.4
 elevator.holdSpeed = 0
 
-elevator.maxHeight = 230        # encoder counts
-elevator.hatchHeight = 22       # inches
-elevator.cargoHeight = 25       #inches
-elevator.margin = 0.5           # elevator automatic movement tolerance
+elevator.maxHeightInch = 40
+
+elevator.lvlOneHeight = 24
+elevator.margin = 0.3           # A tolerance when going to the level 1 height
 elevator.elevatorDeadZone = .05
-elevator.inchesPerTick = .117   # or 8.56 TICKS per inch
+elevator.inchesPerTick = 0.117    # using currently encoder counts only
 
 elevator.encAPort = 4
 elevator.encBPort = 5
@@ -135,5 +134,8 @@ cargograb.closeAngleLeft = 150
 hatchgrab = ConfigHolder()
 hatchgrab.solenoidExtendPort = 6
 hatchgrab.solenoidRetractPort = 7
+
+hatchgrab.extendSuctionsPort = 8
+hatchgrab.retractSuctionsPort = 9
 
 print("RobotMap module completed load")

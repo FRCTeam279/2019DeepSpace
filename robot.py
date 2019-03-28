@@ -55,6 +55,7 @@ class MyRobot(CommandBasedRobot):
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
+        SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)      
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
         SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
@@ -82,6 +83,7 @@ class MyRobot(CommandBasedRobot):
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
+        SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
         SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
@@ -109,6 +111,7 @@ class MyRobot(CommandBasedRobot):
         #Game Objective States
         SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
         SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
+        SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)
         SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
         SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
