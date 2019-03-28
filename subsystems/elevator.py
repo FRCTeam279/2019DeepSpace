@@ -2,8 +2,6 @@ import math
 import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
-#from commands.elevatormoveup import ElevatorMoveUp
-#from commands.elevatormovedown import ElevatorMoveDown
 from commands.elevatorteleopdefault import ElevatorTeleopDefault
 
 import subsystems
@@ -46,7 +44,6 @@ class Elevator(Subsystem):
     def holdElevator(self):
         if self.btmLimitSwitch.get():
             self.elevatorSpdCtrl.set(0.0)
-            #self.elevatorEncoder.reset()
         else:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
 
@@ -62,7 +59,7 @@ class Elevator(Subsystem):
             self.elevatorEncoder.reset()
 
         dist = self.elevatorHeight   # encoder counts for now
-        topLimit = dist >= robotmap.elevator.maxHeight
+        topLimit = dist >= robotmap.elevator.maxHeightInch
 
         if (btmLimit and speed <= 0.0):
             self.elevatorSpdCtrl.set(0)
@@ -88,16 +85,19 @@ class Elevator(Subsystem):
     def elevatorMoveUp(self, speed):
         if self.btmLimitSwitch.get() == True:
             self.elevatorEncoder.reset()
-
+            
         self.elevatorSpdCtrl.set(speed)
 
     def elevatorMoveDown(self, speed):
         if self.btmLimitSwitch.get() == True:
             self.elevatorEncoder.reset()
+
         if not self.btmLimitSwitch:
             self.elevatorSpdCtrl.set(speed)
+
         else:
             self.elevatorSpdCtrl.set(0.0)
+
 #-----------------------------------------------------------------------------------
     def elevatorCargoHeight(self):
         if self.btmLimitSwitch.get() == True:
@@ -109,22 +109,6 @@ class Elevator(Subsystem):
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdDown*0.75))
         else:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
-
-    def elevatorMoveUp(self, speed):
-        if self.btmLimitSwitch.get() == True:
-            self.elevatorEncoder.reset()
-
-        self.elevatorSpdCtrl.set(speed)
-
-    def elevatorMoveDown(self, speed):
-        if self.btmLimitSwitch.get() == True:
-            self.elevatorEncoder.reset()
-            
-        if not self.btmLimitSwitch:
-            self.elevatorSpdCtrl.set(speed)
-
-        else:
-            self.elevatorSpdCtrl.set(0.0)
 
     def resetEncoders(self):
         self.elevatorEncoder.reset()

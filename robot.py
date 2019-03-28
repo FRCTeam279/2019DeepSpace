@@ -53,18 +53,17 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
-        SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
-        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
-        SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)      
-        SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
+        SmartDashboard.putBoolean("Ramp Tog", subsystems.ramp.rampToggle)
+        SmartDashboard.putBoolean("Hatch Tog", subsystems.hatchgrab.hatchToggle)
+        SmartDashboard.putBoolean("Suction Extend", subsystems.hatchgrab.hatchExtendToggle)
+        SmartDashboard.putBoolean("Relay State", subsystems.hatchgrab.hatchGrabExtendSol.get())      
+        SmartDashboard.putBoolean("Cargo Tog", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
         SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
 
         #Driveline data
         SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
         SmartDashboard.putNumber("Right Speed", subsystems.driveline.rightSpdCtrl.get())
-        SmartDashboard.putNumber("Speed Dif", subsystems.driveline.spdDif)
-
         SmartDashboard.putNumber("Right Sensors", subsystems.driveline.rSensor.getVoltage())
         SmartDashboard.putNumber("Left Sensors", subsystems.driveline.lSensor.getVoltage())
         SmartDashboard.putNumber("Sensor Dif", subsystems.driveline.lineSensorCompare)
@@ -81,18 +80,17 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
-        SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
-        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
-        SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)
-        SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
+        SmartDashboard.putBoolean("Ramp Tog", subsystems.ramp.rampToggle)
+        SmartDashboard.putBoolean("Hatch Tog", subsystems.hatchgrab.hatchToggle)
+        SmartDashboard.putBoolean("Suction Extend", subsystems.hatchgrab.hatchExtendToggle)
+        SmartDashboard.putBoolean("Cargo Tog", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
         SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
+        SmartDashboard.putBoolean("Relay State", subsystems.hatchgrab.hatchGrabExtendSol.get()) 
 
         #Driveline data
         SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
         SmartDashboard.putNumber("Right Speed", subsystems.driveline.rightSpdCtrl.get())
-        SmartDashboard.putNumber("Speed Dif", subsystems.driveline.spdDif)
-
         SmartDashboard.putNumber("Right Sensors", subsystems.driveline.rSensor.getVoltage())
         SmartDashboard.putNumber("Left Sensors", subsystems.driveline.lSensor.getVoltage())
         SmartDashboard.putNumber("Sensor Dif", subsystems.driveline.lineSensorCompare)
@@ -109,18 +107,17 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Elevator Height", subsystems.elevator.elevatorEncoder.getDistance())
 
         #Game Objective States
-        SmartDashboard.putBoolean("Ramp Tog State", subsystems.ramp.rampToggle)
-        SmartDashboard.putBoolean("Hatch Tog State", subsystems.hatchgrab.hatchToggle)
-        SmartDashboard.putBoolean("Hatch Extend Tog", subsystems.hatchgrab.hatchExtendToggle)
-        SmartDashboard.putBoolean("Cargo Tog State", subsystems.cargograb.cargoToggle)
+        SmartDashboard.putBoolean("Ramp Tog", subsystems.ramp.rampToggle)
+        SmartDashboard.putBoolean("Hatch Tog", subsystems.hatchgrab.hatchToggle)
+        SmartDashboard.putBoolean("Suction Extend", subsystems.hatchgrab.hatchExtendToggle)
+        SmartDashboard.putBoolean("Cargo Tog", subsystems.cargograb.cargoToggle)
         SmartDashboard.putNumber("R Servo Angle", subsystems.cargograb.rightServo.getAngle())
         SmartDashboard.putNumber("L Servo Angle", subsystems.cargograb.leftServo.getAngle())
+        SmartDashboard.putBoolean("Relay State", subsystems.hatchgrab.hatchGrabExtendSol.get()) 
 
         #Driveline data
         SmartDashboard.putNumber("Left Speed", subsystems.driveline.leftSpdCtrl.get())
         SmartDashboard.putNumber("Right Speed", subsystems.driveline.rightSpdCtrl.get())
-        SmartDashboard.putNumber("Speed Dif", subsystems.driveline.spdDif)
-
         SmartDashboard.putNumber("Right Sensors", subsystems.driveline.rSensor.getVoltage())
         SmartDashboard.putNumber("Left Sensors", subsystems.driveline.lSensor.getVoltage())
         SmartDashboard.putNumber("Sensor Dif", subsystems.driveline.lineSensorCompare)

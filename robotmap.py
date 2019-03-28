@@ -92,6 +92,8 @@ elevator.scaleSpdDown = 0.4
 elevator.holdSpeed = 0
 
 elevator.maxHeightInch = 40
+elevator.hatchHeight = 25
+elevator.cargoHeight = 35
 
 elevator.lvlOneHeight = 24
 elevator.margin = 0.3           # A tolerance when going to the level 1 height
@@ -135,7 +137,7 @@ hatchgrab = ConfigHolder()
 hatchgrab.solenoidExtendPort = 6
 hatchgrab.solenoidRetractPort = 7
 
-hatchgrab.extendSuctionsPort = 8
-hatchgrab.retractSuctionsPort = 9
+#hatchgrab.extendSuctionsPort = 8
+hatchgrab.extensionSpikePort = 0
 
 print("RobotMap module completed load")

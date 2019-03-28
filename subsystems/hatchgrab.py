@@ -3,6 +3,7 @@ import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
 from wpilib import Solenoid
+from wpilib import Relay
 from commands.hatchgrabteleopdefault import HatchGrabTeleopDefault
 
 import subsystems
@@ -20,7 +21,9 @@ class HatchGrab(Subsystem):
         except Exception as e:
             print("{}Exception caught instantiating hatch grabber solenoid. {}".format(self.logPrefix, e))
             if not wpilib.DriverStation.getInstance().isFmsAttached():
-                raise       
+                raise    
+
+        self.hatchGrabExtendSol = wpilib.Relay(robotmap.hatchgrab.extensionSpikePort, 0)
 
         self.hatchToggle = False
         self.hatchExtendToggle = False
@@ -46,6 +49,14 @@ class HatchGrab(Subsystem):
 
     def HatchClose(self): 
         self.hatchGrabSolenoid.set(2)   # 1: extend, 2: retract, 0: off
+
+
+    def HatchExtend(self):
+        self.hatchGrabExtendSol.set(2)
+
+    def HatchRetract(self):
+        self.hatchGrabExtendSol.set(0)
+
 
     def initDefaultCommand(self):
         self.setDefaultCommand(HatchGrabTeleopDefault())

@@ -16,5 +16,10 @@ class HatchGrabTeleopDefault(Command):
         else:
             subsystems.hatchgrab.HatchOpen()
 
+        if subsystems.hatchgrab.hatchExtendToggle == True:
+            subsystems.hatchgrab.HatchExtend()
+        else:
+            subsystems.hatchgrab.HatchRetract()
+
     def isFinished(self):
         return False

@@ -74,13 +74,14 @@ config.btnExtendBackIndex = 4
 
 # GO Gamepad (Logitech)
 config.btnHatchGrabTogIndex = 1         # 1 = A
+config.btnExtendSuctionsTogIndex =  6   # 4 = Y
 config.btnCargoGrabTogIndex = 3         # 3 = X
 config.btnRampTogIndex = 2              # 2 = B
-config.btnElevatorCargoHeight = 5       # 5 = LB
-config.btnExtendSuctionsTogIndex =  6        # 6 = RB
 
-config.axisElevatorIndex = 1            # 1 = LY axis
-config.btnElevatorHatchHeightIndex = 7       # 6 = RB
+config.btnElevatorHatchHeightIndex = 5       # 5 = LB
+config.btnElevatorCargoHeightIndex = 6       # 6 = RB
+
+config.axisElevatorIndex = 1           # 1 = LY axis
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -195,7 +196,7 @@ def init():
     btnElevatorHatchHeight.whenPressed(ElevatorMoveHatchHeight())
 
     global btnElevatorCargoHeight
-    btnElevatorCargoHeight = JoystickButton(goGamePad, config.btnElevatorCargoHeight)
+    btnElevatorCargoHeight = JoystickButton(goGamePad, config.btnElevatorCargoHeightIndex)
     btnElevatorCargoHeight.whenPressed(ElevatorCargoHeight())
 
 # ----------------------------------------------------------
