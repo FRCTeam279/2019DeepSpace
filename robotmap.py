@@ -89,7 +89,7 @@ elevator.btmLimitSwitchPort = 6     # DIO port
 elevator.motorPort = 2              # in pwm 2, to the spark relay
 #elevator.btmLimitNormalClosed = False   # switch is normally cosed
 elevator.scaleSpdUp = 0.8
-elevator.scaleSpdDown = 0.8
+elevator.scaleSpdDown = 0.4
 elevator.holdSpeed = 0
 
 elevator.maxHeight = 230        # encoder counts
