@@ -137,7 +137,6 @@ hatchgrab = ConfigHolder()
 hatchgrab.solenoidExtendPort = 6
 hatchgrab.solenoidRetractPort = 7
 
-#hatchgrab.extendSuctionsPort = 8
 hatchgrab.extensionSpikePort = 0
 
 print("RobotMap module completed load")

@@ -74,7 +74,7 @@ config.btnExtendBackIndex = 4
 
 # GO Gamepad (Logitech)
 config.btnHatchGrabTogIndex = 1         # 1 = A
-config.btnExtendSuctionsTogIndex =  6   # 4 = Y
+config.btnExtendSuctionsTogIndex =  4   # 4 = Y
 config.btnCargoGrabTogIndex = 3         # 3 = X
 config.btnRampTogIndex = 2              # 2 = B
 
