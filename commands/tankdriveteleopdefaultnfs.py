@@ -6,7 +6,6 @@ import subsystems
 import oi
 import robotmap
 
-
 class TankDriveTeleopDefaultNFS(Command):
     """
     This command uses a throttle and turning control scheme in the same manner as Need for Speed

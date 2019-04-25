@@ -53,34 +53,24 @@ class Elevator(Subsystem):
         self.elevatorSpdCtrl.set(speed)
 
     def move(self, speed):
-        btmLimit = self.btmLimitSwitch.get()
+        #btmLimit = self.btmLimitSwitch.get()
 
-        if btmLimit == True:
-            self.elevatorEncoder.reset()
+        #if btmLimit == True:
+        #    self.elevatorEncoder.reset()
 
         dist = self.elevatorHeight   # encoder counts for now
-        topLimit = dist >= robotmap.elevator.maxHeightInch
 
-        if (btmLimit and speed <= 0.0):
+        if (speed <= 0.0 and (dist <= -5)):
             self.elevatorSpdCtrl.set(0)
-        elif (topLimit and speed > 0.0):
+        elif ((dist >= robotmap.elevator.maxHeightInch) and (speed > 0.0)):
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
         else:
             if speed > 0:
                 self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdUp*speed))
-            else:
+            elif speed < 0:
                 self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*speed))
-
-    def elevatorMoveHatchHeight(self):
-        if self.btmLimitSwitch.get() == True:
-            self.elevatorEncoder.reset()
-
-        if self.elevatorHeight > robotmap.elevator.hatchHeight + robotmap.elevator.margin:
-            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*-0.75))
-        elif self.elevatorHeight < robotmap.elevator.hatchHeight - robotmap.elevator.margin:
-            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdDown*0.75))
-        else:
-            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
+            else:
+                self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
 
     def elevatorMoveUp(self, speed):
         if self.btmLimitSwitch.get() == True:
@@ -98,7 +88,6 @@ class Elevator(Subsystem):
         else:
             self.elevatorSpdCtrl.set(0.0)
 
-#-----------------------------------------------------------------------------------
     def elevatorCargoHeight(self):
         if self.btmLimitSwitch.get() == True:
             self.elevatorEncoder.reset()
@@ -106,6 +95,17 @@ class Elevator(Subsystem):
         if self.elevatorHeight > robotmap.elevator.cargoHeight + robotmap.elevator.margin:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*-0.75))
         elif self.elevatorHeight < robotmap.elevator.cargoHeight - robotmap.elevator.margin:
+            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdDown*0.75))
+        else:
+            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
+
+    def elevatorMoveHatchHeight(self):
+        if self.btmLimitSwitch.get() == True:
+            self.elevatorEncoder.reset()
+
+        if self.elevatorHeight > robotmap.elevator.hatchHeight + robotmap.elevator.margin:
+            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*-0.75))
+        elif self.elevatorHeight < robotmap.elevator.hatchHeight - robotmap.elevator.margin:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdDown*0.75))
         else:
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
